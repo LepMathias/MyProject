@@ -18,6 +18,7 @@ if(isset($_GET['q'])){
 
     $statement->execute();
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
     /*if(isset($_GET['h'])){
         $h = $_GET['h'];
         if($_GET('Déjeuner')){

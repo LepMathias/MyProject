@@ -39,6 +39,7 @@ $nbrOnLunch = $reservationManager->getCountLunch($q, $schedulesManager->getSched
 $nbrOnDiner = $reservationManager->getCountDiner($q, $schedulesManager->getSchedulesDay($day)->startDin, $schedulesManager->getSchedulesDay($day)->endDin);
 $availability = $schedulesManager->getAvailableHours($day, $nbrOnLunch[0], $nbrOnDiner[0], $maxOfGuest->content);
 
+
 if($availability['lunch'] === "close"){
     echo "<option value='' selected disabled>Fermé au déjeuner</option>";
 }
