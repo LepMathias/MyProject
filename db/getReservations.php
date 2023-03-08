@@ -18,7 +18,14 @@ if(isset($_GET['q'])){
 
     $statement->execute();
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    /**
+     * Alternative : envoie données en json pour traitement en front
+     */
+    /* echo json_encode($result);*/
 
+    /**
+     * Ajour d'un paramètre service pour trie des réservations
+     */
     /*if(isset($_GET['h'])){
         $h = $_GET['h'];
         if($_GET('Déjeuner')){

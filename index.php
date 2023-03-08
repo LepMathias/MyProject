@@ -29,9 +29,9 @@ include 'logicIndex.php';
                 </div>
             </div>
             <div class="col-md-3">
-                <?php if(isset($_SESSION) && $_SESSION['admin'] === 1): ?>
+                <?php if(isset($user) && $user->getIsAdmin() === 1): ?>
                     <div class="row">
-                        <p class="text-center"><?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></p>
+                        <p class="text-center"><?= $user->firstname.' '.$user->lastname ?></p>
                     </div>
                     <div class="row">
                         <a href="admin/pages/reservationsParam.php" class="btn" id="param"><h5 class="text-white">Paramètres</h5></a>
@@ -39,9 +39,9 @@ include 'logicIndex.php';
                     <div class="row">
                         <a href="public/pages/logout.php" class="btn" id="log-ou"><h5 class="text-white">Log out</h5></a>
                     </div>
-                <?php elseif(isset($_SESSION) && $_SESSION['admin'] === 0): ?>
+                <?php elseif(isset($user) && $user->getIsAdmin() === 0): ?>
                     <div class="row">
-                        <p class="text-center"><?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></p>
+                        <p class="text-center"><?= $user->firstname.' '.$user->lastname ?></p>
                     </div>
                     <div class="row">
                         <a href="public/pages/logout.php" class="btn" id="log-out"><h5 class="text-white">Log out</h5></a>
@@ -60,55 +60,58 @@ include 'logicIndex.php';
 </header>
 
 <body>
-<div class="container">
-    <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
-        <!-- Les indicateurs-->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#caroussel1" data-bs-slide-to="0" class="active"></button>
-            <?php
-            for ($i = 1; $i <= count($files); $i++) {
-                include 'public/includes/buttonCarousel.php';
-            }
-            ?>
+<div class="container main-container">
+    <div class="container">
+        <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
+            <!-- Les indicateurs-->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#caroussel1" data-bs-slide-to="0" class="active"></button>
+                <?php
+                for ($i = 1; $i <= count($files); $i++) {
+                    include 'public/includes/buttonCarousel.php';
+                }
+                ?>
+            </div>
+            <!-- Le carousel -->
+            <div class="carousel-inner">
+                <?php
+                include 'public/includes/firstDisplayCarousel.php';
+                foreach ($files as $file){
+                    include 'public/includes/displayCarousel.php';
+                }
+                ?>
+            </div>
+            <!-- Les commandes de contrôle -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
         </div>
-        <!-- Le carousel -->
-        <div class="carousel-inner">
-            <?php
-            include 'public/includes/firstDisplayCarousel.php';
-            foreach ($files as $file){
-                include 'public/includes/displayCarousel.php';
-            }
-            ?>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <button class="btn-menu"><img class="pic-menu" src="public/src/img/navbar/menu_icone-reservation.jpg" id="reservation"></button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <button class="btn-menu"><img class="pic-menu modal-btn" src="public/src/img/navbar/menu_allergenes_pic.jpg" id="allergenes_img"></button>
+                </div>
+            </div>
+            <div class="col-md-4" id="display-feedback">
+                <div class="row">
+                    <button class="btn-menu"><img class="pic-menu" src="public/src/img/navbar/menu_horraires_pic.jpg" id="horaires-img"></button>
+                </div>
+            </div>
         </div>
-        <!-- Les commandes de contrôle -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
     </div>
 </div>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="row">
-                <button class="btn-menu"><img class="pic-menu" src="public/src/img/navbar/menu_icone-reservation.jpg" id="reservation"></button>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="row">
-                <button class="btn-menu"><img class="pic-menu modal-btn" src="public/src/img/navbar/menu_allergenes_pic.jpg" id="allergenes_img"></button>
-            </div>
-        </div>
-        <div class="col-md-4" id="display-feedback">
-            <div class="row">
-                <button class="btn-menu"><img class="pic-menu" src="public/src/img/navbar/menu_horraires_pic.jpg" id="horaires-img"></button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <?php
 include_once 'commonFiles/includes/footer.php';

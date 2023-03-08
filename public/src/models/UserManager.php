@@ -39,14 +39,7 @@ class UserManager
             if ($user = $statement->fetch()) {
                 if ($user->isPasswordValid($password)) {
                     session_start();
-                    $_SESSION['id'] = $user->getId();
-                    $_SESSION['admin'] = $user->getisAdmin();
-                    $_SESSION['firstname'] = $user->firstname;
-                    $_SESSION['lastname'] = $user->lastname;
-                    $_SESSION['defaultNbrGuest'] = $user->defaultNbrGuest;
-                    $_SESSION['email'] = $user->email;
-                    $_SESSION['phoneNumber'] = $user->phoneNumber;
-                    $_SESSION['allergies'] = $user->allergies;
+                    $_SESSION['user'] = $user;
                     return $user;
                 } else {
                     echo "<script>alert('Mot de passe erroné')</script>";

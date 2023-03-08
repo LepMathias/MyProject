@@ -4,6 +4,10 @@ body {
     font-family: 'Rock Salt', cursive;
 }
 
+.main-container {
+    background-color: #ffffff;
+}
+
 nav, footer {
     background-color: #403F3E;
     padding: 30px;
@@ -46,17 +50,20 @@ Main pages Images on menu
 --------------------------------------------------------------*/
 .btn-menu {
     align-items: center;
-    background-color: #583408;
     border: none;
-    color: #818080;
     margin: auto;
-    padding: 0.5vw;
-    width: 70%;
+    padding: 0.3vw;
+    width: 80%;
+    border-radius: 5px;
+    background-color: #ffffff;
 }
 .pic-menu {
     margin: auto;
     vertical-align: center;
     width: 100%;
+    border: 3px solid #403F3E;
+    border-radius: 5px;
+    height: 17vh;
 }
 
 .menus {
@@ -113,6 +120,9 @@ select #note-select {
 /*--------------------------------------------------------------
 # Gallery
 --------------------------------------------------------------*/
+.carousel {
+    padding: 10px;
+}
 
 .hover {
     align-items: center;

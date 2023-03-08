@@ -11,7 +11,7 @@
         </td>
         <td>
             <input type="hidden" name="id" id="id" value="<?=$schedule->id?>">
-            <button class="btn btn-success" type="submit" id="schedules-btn" onclick="reloadDIV()">Mettre à jour</button>
+            <button class="btn btn-success" type="submit" id="schedules-btn">Mettre à jour</button>
         </td>
     </tr>
 </form>
