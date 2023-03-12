@@ -1,0 +1,269 @@
+.main-div {
+    background-color: #EEE;
+}
+nav, h5 {
+    font-family: 'Rock Salt', cursive;
+}
+
+nav, footer {
+    padding: 5px;
+    text-decoration: none;
+}
+nav {
+    position: fixed;
+    top: 0px;
+    width: 100vw;
+    background-color: #5F9EA0;
+    opacity: 0.8;
+    z-index: 5;
+}
+
+
+
+footer {
+    background-color: #5F9EA0;
+    opacity: 0.8;
+    text-align: center;
+}
+
+footer p {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.home-picture {
+    width: 100vw;
+    z-index: -1;
+    position: fixed;
+    top: 0;
+}
+
+.carousel-container {
+    width: 100vw;
+    margin-top: 800px;
+    background-color: #5F9EA0;
+}
+
+.content-container {
+    width: 100vw;
+    background-color: #EEE;
+}
+
+.div-100vw {
+    width: 100vw;
+}
+li {
+    list-style: none;
+}
+
+@media (max-device-width: 700px) {
+
+    nav, .home-picture {
+        position: static;
+    }
+    .carousel-container {
+        margin-top: none;
+        width: auto;
+    }
+    .nav-btn {
+        width: 30vw;
+        display: inline-block;
+        text-align: left;
+    }
+    .nav-btn>h5 {
+        font-size: 8px;
+    }
+
+}
+/*--------------------------------------------------------------
+Schedules table
+--------------------------------------------------------------*/
+tbody td, thead th, h5 {
+    text-align: center;
+}
+
+td {
+    letter-spacing: 1px;
+    padding: 20px;
+}
+
+th {
+    letter-spacing: 2px;
+    padding: 20px;
+}
+
+tfoot th {
+    text-align: right;
+}
+
+/*--------------------------------------------------------------
+Main pages Images on menu
+--------------------------------------------------------------*/
+.btn-menu {
+    align-items: center;
+    border: none;
+    margin: auto;
+    padding: 0.3vw;
+    width: 80%;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+.pic-menu {
+    margin: auto;
+    vertical-align: center;
+    width: 100%;
+    border: 3px solid #403F3E;
+    border-radius: 5px;
+    height: 25vh;
+}
+
+.menus {
+    margin: auto;
+    vertical-align: center;
+    padding: 0.5vw;
+}
+/*--------------------------------------------------------------
+Modal
+--------------------------------------------------------------*/
+.modal-content {
+    background-color: #583408;
+    color: #818080;
+}
+
+.modal-body table {
+    border: 3px solid #818080;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.modal-title {
+    color: #ffffff;
+    text-align: center;
+}
+
+#reg-modal-btn {
+    background-color: #583408;
+    color: #ffffff;
+    border: none;
+}
+/*--------------------------------------------------------------
+# Form
+--------------------------------------------------------------*/
+form {
+    font-family: "DejaVu Serif", serif;
+}
+
+label {
+    padding-top: 1vw;
+}
+
+select #note-select {
+    width: 5vw;
+}
+.card {
+    background-color: #492A05;
+    min-height: inherit;
+    padding: 0.5vw;
+    position: relative;
+    top: 10px;
+}
+
+/*--------------------------------------------------------------
+# Gallery
+--------------------------------------------------------------*/
+.carousel {
+    padding: 10px;
+}
+
+.hover {
+    align-items: center;
+    display: inline-block;
+    float: none;
+    margin: auto;
+    padding: 10px;
+    width: 28%;
+    opacity: 0;
+}
+.gallery-img {
+    max-width: 100%;
+    padding: 12px;
+}
+.img-title {
+    color: #000000;
+    display: flex;
+    font-size: 16px;
+    opacity: 0;
+    position: relative;
+    top: -30px;
+}
+.carousel-item:hover .hover {
+    background-color: #818080;
+    opacity: 1;
+}
+
+
+/*--------------------------------------------------------------
+# MenusPage
+--------------------------------------------------------------*/
+.menus {
+    margin-top: 15px;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+.subTitle {
+    border-bottom: #818080 double 4px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+.head-menus {
+    border-bottom: #818080 solid 4px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+.content {
+    color: #818080;
+}
+#menus {
+    margin-top: 80px;
+}
+
+.menus-card {
+    background-color: #403F3E;
+}
+
+.schedules-btn {
+    width: 50%;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+}
+
+#scd-container {
+    margin-top: 180px;
+}
+
+#scd-admin-container {
+    margin-top: 148px;
+    background-color: #F8F8FF;
+}
+
+#category {
+    padding: 10px;
+}
+
+.booking {
+    width: 20vw;
+    height: 5vw;
+    position: fixed;
+    top: 8vw;
+    right: 1vw;
+}
+@media (max-width: 700px) {
+    td, th, h5 {
+        font-size: 4vw;
+        padding: 2vw;
+    }
+}
