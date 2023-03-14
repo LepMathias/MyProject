@@ -1,6 +1,17 @@
+/*--------------------------------------------------------------
+Body of main page and context of display
+--------------------------------------------------------------*/
 .main-div {
     background-color: #EEE;
 }
+
+.div-100vw {
+    width: 100vw;
+}
+
+/*--------------------------------------------------------------
+Nav and footer
+--------------------------------------------------------------*/
 nav, h5 {
     font-family: 'Rock Salt', cursive;
 }
@@ -9,16 +20,15 @@ nav, footer {
     padding: 5px;
     text-decoration: none;
 }
+
 nav {
     position: fixed;
-    top: 0px;
+    top: 0;
     width: 100vw;
     background-color: #5F9EA0;
     opacity: 0.8;
     z-index: 5;
 }
-
-
 
 footer {
     background-color: #5F9EA0;
@@ -28,10 +38,6 @@ footer {
 
 footer p {
     text-align: center;
-}
-
-.text-left {
-    text-align: left;
 }
 
 .home-picture {
@@ -52,20 +58,16 @@ footer p {
     background-color: #EEE;
 }
 
-.div-100vw {
-    width: 100vw;
-}
 li {
     list-style: none;
 }
 
-@media (max-device-width: 700px) {
-
+@media (max-width: 700px) {
     nav, .home-picture {
         position: static;
     }
     .carousel-container {
-        margin-top: none;
+        margin-top: 0;
         width: auto;
     }
     .nav-btn {
@@ -73,11 +75,12 @@ li {
         display: inline-block;
         text-align: left;
     }
-    .nav-btn>h5 {
+
+    .nav-btn>h6 {
         font-size: 8px;
     }
-
 }
+
 /*--------------------------------------------------------------
 Schedules table
 --------------------------------------------------------------*/
@@ -87,7 +90,7 @@ tbody td, thead th, h5 {
 
 td {
     letter-spacing: 1px;
-    padding: 20px;
+    padding: 10px;
 }
 
 th {
@@ -97,6 +100,17 @@ th {
 
 tfoot th {
     text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+@media (max-width: 700px) {
+    td, th, h5 {
+        font-size: 4vw;
+        padding: 1vw;
+    }
 }
 
 /*--------------------------------------------------------------
@@ -125,6 +139,7 @@ Main pages Images on menu
     vertical-align: center;
     padding: 0.5vw;
 }
+
 /*--------------------------------------------------------------
 Modal
 --------------------------------------------------------------*/
@@ -149,6 +164,7 @@ Modal
     color: #ffffff;
     border: none;
 }
+
 /*--------------------------------------------------------------
 # Form
 --------------------------------------------------------------*/
@@ -163,8 +179,9 @@ label {
 select #note-select {
     width: 5vw;
 }
+
 .card {
-    background-color: #492A05;
+    background-color: #F0F8FF;
     min-height: inherit;
     padding: 0.5vw;
     position: relative;
@@ -204,13 +221,16 @@ select #note-select {
     opacity: 1;
 }
 
-
 /*--------------------------------------------------------------
 # MenusPage
 --------------------------------------------------------------*/
+#scd-container {
+    margin-top: 180px;
+}
+
 .menus {
     margin-top: 15px;
-    padding-bottom: 15px;
+
     display: inline-block;
 }
 .subTitle {
@@ -221,49 +241,71 @@ select #note-select {
 }
 .head-menus {
     border-bottom: #818080 solid 4px;
-    margin-top: 15px;
-    padding-bottom: 15px;
+
 }
 .content {
     color: #818080;
 }
-#menus {
-    margin-top: 80px;
-}
 
 .menus-card {
-    background-color: #403F3E;
+    background-color: #F0F8FF;
 }
 
-.schedules-btn {
-    width: 50%;
-    margin-top: 2vh;
-    margin-bottom: 1vh;
+.btn-menuPage {
+    align-items: center;
+    border: none;
+    margin: auto;
+    padding: 0.3vw;
+    width: 30%;
+    border-radius: 5px;
+    background-color: #ffffff;
 }
 
-#scd-container {
-    margin-top: 180px;
-}
-
-#scd-admin-container {
-    margin-top: 148px;
-    background-color: #F8F8FF;
-}
-
-#category {
-    padding: 10px;
-}
-
-.booking {
+.booking-btn {
     width: 20vw;
     height: 5vw;
     position: fixed;
     top: 8vw;
     right: 1vw;
 }
+
+#menus {
+    margin-top: 80px;
+}
+
+#category {
+    margin-bottom: 30px;
+}
 @media (max-width: 700px) {
-    td, th, h5 {
-        font-size: 4vw;
-        padding: 2vw;
+    .booking-btn {
+        width: 22vw;
+        height: 10vh;
+        top: unset;
+        bottom: 1vw;
+        text-align: center;
+        align-items: center;
+        z-index: 1;
+    }
+
+    .btn-menuPage {
+        width: 80%;
+    }
+
+    #scd-container {
+        margin-top: 0;
+    }
+}
+
+/*--------------------------------------------------------------
+# MenusPage
+--------------------------------------------------------------*/
+#scd-admin-container {
+    margin-top: 148px;
+    background-color: #F8F8FF;
+}
+
+@media (max-width: 700px) {
+    #scd-admin-container {
+        margin-top: 0;
     }
 }
