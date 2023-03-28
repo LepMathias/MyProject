@@ -26,6 +26,20 @@ class MenuManager
         $statement->execute();
     }
 
+    public function updateMenu(string $title, string $description, string $price, string $availability, int $id)
+    {
+        $statement = $this->pdo->prepare('UPDATE menus
+            SET title = :title, availability = :availability, description = :description, price = :price
+            WHERE id = :id');
+        $statement->bindValue(':title', $title);
+        $statement->bindValue(':availability', $availability);
+        $statement->bindValue(':description', $description);
+        $statement->bindValue(':price', $price);
+        $statement->bindValue('id', $id);
+
+        $statement->execute();
+    }
+
     public function getMenus()
     {
         $statement = $this->pdo->prepare('SELECT * FROM menus');

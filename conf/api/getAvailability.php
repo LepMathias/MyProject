@@ -38,8 +38,9 @@ $date = date('l', strtotime($q));
             break;
     }
 $maxOfGuest = $settingManager->getSettings('maxOfGuest');
-$nbrOnLunch = $reservationManager->getCountLunch($q, $schedulesManager->getSchedulesDay($day)->startDej, $schedulesManager->getSchedulesDay($day)->endDej);
-$nbrOnDiner = $reservationManager->getCountDiner($q, $schedulesManager->getSchedulesDay($day)->startDin, $schedulesManager->getSchedulesDay($day)->endDin);
+$schedulesDay = $schedulesManager->getSchedulesDay($day);
+$nbrOnLunch = $reservationManager->getCountReservations($q, $schedulesDay->startDej, $schedulesDay->endDej);
+$nbrOnDiner = $reservationManager->getCountReservations($q, $schedulesDay->startDin, $schedulesDay->endDin);
 $availability = $schedulesManager->getAvailableHours($day, $nbrOnLunch[0], $nbrOnDiner[0], $maxOfGuest->content);
 
 

@@ -52,7 +52,7 @@ class SchedulesManager
         $schedule = $this->getSchedulesDay($day);
         if (strlen($schedule->startDej) === 0) {
             $availableHours['lunch'] = "close";
-        } else if ($nbrOnLunch > $maxOfGuest) {
+        } else if ($nbrOnLunch >= $maxOfGuest) {
             $availableHours['lunch'] = "full";
         } else {
             $availableLunchHours = [];
@@ -67,7 +67,7 @@ class SchedulesManager
         }
         if (strlen($schedule->startDin) === 0) {
             $availableHours['diner'] = "close";
-        } else if ($nbrOnDiner > $maxOfGuest) {
+        } else if ($nbrOnDiner >= $maxOfGuest) {
             $availableHours['diner'] = "full";
         } else {
             $availableDinerHours = [];

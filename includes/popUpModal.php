@@ -34,8 +34,8 @@
             <div class="modal-body">
                 <p class="text-center">Le gluten et la lactose.</p>
                 <p>Deux allergènes qui ne sont pas à négliger dans la cuisine savoyarde.<br><br>
-                    C'est pourquoi nous proposons différents pains snas gluten ainsi que des plats sans lactose tout au long
-                    de l'année.</p>
+                    C'est pourquoi nous proposons différents pains snas gluten ainsi que des plats sans lactose tout au
+                    long de l'année.</p>
                 <p>Pour toute(s) autre(s) allergie(s), n'hésitez pas à nous le spécifier lors de votre réservation.</p>
             </div>
         </div>
@@ -54,7 +54,8 @@
                     <div class="row">
                         <div class="col">
                             <label for="date" class="form-label">Date</label>
-                            <input type="date" name="date" id="date" class="form-control" onchange="getAvailability(this.value)" required>
+                            <input type="date" name="date" id="date" class="form-control"
+                                   onchange="getAvailability(this.value)" required>
                         </div>
                         <div class="col">
                             <label for="hour" class="form-label">Heure</label>
@@ -64,14 +65,6 @@
                     </div>
                     <?php if (!isset($_SESSION['user'])): ?>
                     <label for="lastname" class="form-label">Nom</label>
-                    <input type="text" name="lastname" id="lastname" value="<?=$_SESSION['lastname']?>" class="form-control" required>
-
-                    <label for="firstname" class="form-label">Prénom</label>
-                    <input type="text" name="firstname" id="firstname" value="<?=$_SESSION['firstname']?>" class="form-control" required>
-
-                    <?php elseif ($_SESSION['admin'] === 1) : ?>
-
-                    <label for="lastname" class="form-label">Nom</label>
                     <input type="text" name="lastname" id="lastname" class="form-control" required>
 
                     <label for="firstname" class="form-label">Prénom</label>
@@ -79,16 +72,20 @@
                     <?php endif;?>
 
                     <label for="nbrOfGuest" class="form-label">Nombre de personne</label>
-                    <input type="number" name="nbrOfGuest" id="nbrOfGuest" value="<?=$_SESSION['defaultNbrGuest']?>" class="form-control" required>
+                    <input type="number" name="nbrOfGuest" id="nbrOfGuest" value="<?=$_SESSION['defaultNbrGuest']?>"
+                           class="form-control" required>
 
                     <label for="emailAddress" class="form-label">Adresse e-mail</label>
-                    <input type="email" name="emailAddress" id="emailAddress" value="<?=$_SESSION['email']?>" class="form-control" required>
+                    <input type="email" name="emailAddress" id="emailAddress" value="<?=$_SESSION['email']?>"
+                           class="form-control" required>
 
                     <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
-                    <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$_SESSION['phoneNumber']?>" class="form-control" required pattern="^((\+)33|0)[1-9](\d{2}){4}$">
+                    <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$_SESSION['phoneNumber']?>"
+                           class="form-control" required pattern="^((\+)33|0)[1-9](\d{2}){4}$">
 
                     <label for="allergies" class="form-label">Allergies</label>
-                    <textarea type="text" name="allergies" id="allergies" value="<?=$_SESSION['allergies']?>" class="form-control" rows="5"></textarea>
+                    <textarea type="text" name="allergies" id="allergies" class="form-control"
+                              rows="5"><?=$_SESSION['allergies']?></textarea>
 
                     <input name="reservation_form" value="newReservation" type="hidden"/>
                     <button type="submit" class="btn btn-menu">Réserver</button>
@@ -133,20 +130,24 @@
                     <div class="row">
                         <div class="col">
                             <label for="lastname" class="form-label">Nom</label>
-                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Lettre uniquement" required>
+                            <input type="text" name="lastname" id="lastname" class="form-control"
+                                   placeholder="Lettre uniquement" required>
                         </div>
 
                         <div class="col">
                             <label for="firstname" class="form-label">Prénom</label>
-                            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Lettre uniquement" required>
+                            <input type="text" name="firstname" id="firstname" class="form-control"
+                                   placeholder="Lettre uniquement" required>
                         </div>
                     </div>
 
                     <label for="email" class="form-label">E-mail</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="email@valide.fr" required>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="email@valide.fr"
+                           required>
 
                     <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
-                    <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="0479000000" required pattern="^((\+)33|0)[1-9](\d{2}){4}$">
+                    <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="0479000000"
+                           required pattern="^((\+)33|0)[1-9](\d{2}){4}$">
 
                     <div class="row">
                         <div class="col">
@@ -156,7 +157,8 @@
                     </div>
 
                     <label for="defaultNbrGuest" class="form-label">Nombre de convive par défault</label>
-                    <input type="number" name="defaultNbrGuest" id="defaultNbrGuest" class="form-control" min="1" max="20" required>
+                    <input type="number" name="defaultNbrGuest" id="defaultNbrGuest" class="form-control" min="1"
+                           max="20" required>
 
                     <label for="allergies" class="form-label">Allergies</label>
                     <textarea type="text" name="allergies" id="allergies" class="form-control" rows="4"></textarea>
@@ -180,7 +182,8 @@
                 <div class="modal-body">
                     <p class="text-center">Bienvenus<br><br>
                                             Votre compte est à présent actif.<br>
-                        Il ne vous reste plus qu'a vous <button type="button" id="reg-modal-btn">connecter</button> pour réserver</p>
+                        Il ne vous reste plus qu'a vous <button type="button" id="reg-modal-btn">connecter</button>
+                        pour réserver</p>
                 </div>
             <?php } else { ?>
                 <div class="modal-header">

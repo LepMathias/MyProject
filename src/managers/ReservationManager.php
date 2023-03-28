@@ -3,6 +3,7 @@
 namespace managers;
 use PDO;
 use models\Reservation;
+use PDOException;
 
 require './src/models/Reservation.php';
 
@@ -28,7 +29,7 @@ class ReservationManager
             $statement->execute();
             return $reservationStatus = ["OK", $date, $hour, $nbrOfGuest];
         } catch (PDOException $e) {
-            file_put_contents('../../../db/dblog.log', $e->getMessage(), FILE_APPEND);
+            file_put_contents('./conf/db/dblog.log', $e->getMessage(), FILE_APPEND);
             return $reservationStatus = "FAIL";
         }
     }
@@ -55,15 +56,15 @@ VALUES (:date, :hour, :nbrOfGuest, :lastname, :firstname, :phoneNumber, :allergi
         }
     }
 
-    public function getCountLunch(string $date, string $startDej, string $endDej)
+    public function getCountReservations(string $date, string $start, string $end)
     {
         $statement = $this->pdo->prepare("SELECT SUM(nbrOfGuest)
                                     FROM reservations 
                                     WHERE date = :d
                                     AND hour BETWEEN :a AND :b");
         $statement->bindValue(':d', $date);
-        $statement->bindValue(':a', $startDej);
-        $statement->bindValue(':b', $endDej);
+        $statement->bindValue(':a', $start);
+        $statement->bindValue(':b', $end);
         $statement->execute();
 
         return $statement->fetch();

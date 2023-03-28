@@ -9,3 +9,4 @@
         <a href="?id=<?=$menu->id?>" class="btn btn-danger">Supprimer</a>
     </div>
 </div>
+

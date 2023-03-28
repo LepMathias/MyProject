@@ -1,4 +1,5 @@
 <?php
+session_start();
 require './src/managers/UserManager.php';
 require './src/managers/ReservationManager.php';
 require './src/managers/PictureManager.php';
@@ -6,6 +7,7 @@ require './src/managers/SchedulesManager.php';
 require './src/managers/SettingManager.php';
 require './src/managers/MealManager.php';
 require './src/managers/MenuManager.php';
+require './conf/db/confDB.php';
 
 use managers\UserManager;
 use managers\ReservationManager;
@@ -113,11 +115,14 @@ try {
 
 
     /**
-     * Create / Read / Delete Menus
+     * Create / Read / Update / Delete Menus
      */
     $menuManager = new MenuManager($pdo);
     if (!empty($_POST['menu'])) {
         $menuManager->addMenu($_POST['title'], $_POST['description'], $_POST['price'], $_POST['availability']);
+    }
+    if (!empty($_POST['upd_menu'])) {
+        $menuManager->updateMenu($_POST['title'], $_POST['description'], $_POST['price'], $_POST['availability'], $_POST['id']);
     }
     if (isset($_GET['id'])) {
         $menuManager->deleteMenu($_GET['id']);

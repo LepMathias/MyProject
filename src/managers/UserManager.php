@@ -47,6 +47,7 @@ class UserManager
             if ($user = $statement->fetch()) {
                 if ($user->isPasswordValid($password)) {
                     session_start();
+                    $_SESSION['user'] = $user;
                     $_SESSION['id'] = $user->getId();
                     $_SESSION['admin'] = $user->getisAdmin();
                     $_SESSION['firstname'] = $user->firstname;
