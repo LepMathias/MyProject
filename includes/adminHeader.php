@@ -10,5 +10,7 @@
                 class="bi bi-caret-down-fill"></i></a>
         <a href="/parameters/reservations" class="col btn btn-param" id="reservation-btn">Réservations<i
                 class="bi bi-caret-down-fill"></i></a>
+        <a href="/parameters/guests" class="col btn btn-param" id="guests-btn">Cardex clients<i
+                    class="bi bi-caret-down-fill"></i></a>
     </div>
 </div>

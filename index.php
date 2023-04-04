@@ -21,6 +21,8 @@ $router->map('GET|POST', '/parameters/gallery', 'adminGallery', 'adminGallery');
 $router->map('GET|POST', '/parameters/carte', 'adminCarte', 'adminCarte');
 $router->map('GET|POST', '/parameters/menus', 'adminMenus', 'adminMenus');
 $router->map('GET|POST', '/parameters/schedules', 'adminSchedules', 'adminSchedules');
+$router->map('GET|POST', '/parameters/guests', 'adminGuests', 'adminGuests');
+
 
 
 /**
