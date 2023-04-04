@@ -26,7 +26,8 @@ include './includes/adminHeader.php'
             <div class="col-md-2">
                 <form name="gallery-form" enctype="multipart/form-data" method="post" action="">
                     <label class="form-label text-center" for="uploadedFile">Choisissez une photo à ajouter</label>
-                    <input class="form-control" type="file" id="uploadedFile" name="uploadedFile" accept="image/png, imgae/jpeg, image/jpg, image/gif">
+                    <input class="form-control" type="file" id="uploadedFile" name="uploadedFile"
+                           accept="image/png, imgae/jpeg, image/jpg, image/gif">
 
                     <label class="form-label" for="title">Nom de la photo</label>
                     <input class="form-control" type="text" id="title" name="pictureTitle">

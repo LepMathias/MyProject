@@ -1,6 +1,9 @@
 <?php
 
 namespace managers;
+use finfo;
+use RuntimeException;
+
 class PictureManager
 {
     public function getExtensionFromMimeType(string $mimeType): ?string

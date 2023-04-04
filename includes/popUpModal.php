@@ -63,7 +63,7 @@
                             </select>
                         </div>
                     </div>
-                    <?php if (!isset($_SESSION['user'])): ?>
+                    <?php if (!isset($_SESSION['user']) | $_SESSION['admin'] === 1): ?>
                     <label for="lastname" class="form-label">Nom</label>
                     <input type="text" name="lastname" id="lastname" class="form-control" required>
 

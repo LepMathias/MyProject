@@ -4,13 +4,13 @@ namespace models;
 class User
 {
     private string $id;
-    public string $lastname;
-    public string $firstname;
-    public string $email;
-    public int $phoneNumber;
+    private string $lastname;
+    private string $firstname;
+    private string $email;
+    private int $phoneNumber;
     private string $password;
-    public string $defaultNbrGuest;
-    public string $allergies;
+    private string $defaultNbrGuest;
+    private string $allergies;
     private int $isAdmin;
 
     /**

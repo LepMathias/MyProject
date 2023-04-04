@@ -50,12 +50,12 @@ class UserManager
                     $_SESSION['user'] = $user;
                     $_SESSION['id'] = $user->getId();
                     $_SESSION['admin'] = $user->getisAdmin();
-                    $_SESSION['firstname'] = $user->firstname;
-                    $_SESSION['lastname'] = $user->lastname;
-                    $_SESSION['defaultNbrGuest'] = $user->defaultNbrGuest;
-                    $_SESSION['email'] = $user->email;
-                    $_SESSION['phoneNumber'] = $user->phoneNumber;
-                    $_SESSION['allergies'] = $user->allergies;
+                    $_SESSION['firstname'] = $user->getFirstname();
+                    $_SESSION['lastname'] = $user->getLastname();
+                    $_SESSION['defaultNbrGuest'] = $user->getDefaultNbrGuest();
+                    $_SESSION['email'] = $user->getEmail();
+                    $_SESSION['phoneNumber'] = $user->getPhoneNumber();
+                    $_SESSION['allergies'] = $user->getAllergies();
                     return $user;
                 } else {
                     echo "<script>alert('Mot de passe erroné')</script>";
