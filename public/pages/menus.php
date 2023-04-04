@@ -70,12 +70,10 @@ include './includes/header.php';
     <button type="button" class="btn btn-warning booking-btn" id="booking">Réservez une table</button>
 </div>
 
-
 <?php
 include './includes/popUpModal.php';
 include './includes/footer.php';
 ?>
-</body>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5s
     mXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

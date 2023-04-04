@@ -22,7 +22,7 @@ if($_SESSION['admin'] === 1){
                 })
         }
     </script>
-
+    </html>
     <?php
 } else {
     header('location: /');
