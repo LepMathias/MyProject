@@ -83,6 +83,20 @@ try {
         $statement->execute();
         $user2 = $statement->fetch()[0];
 
+    /*Création client 3*/
+    $statement = $restoPdo->prepare('INSERT INTO users (
+       id, lastname, firstname, email, phoneNumber, password, defaultNbrGuest, allergies, isAdmin)
+       VALUES (UUID(), :lastname, :firstname, :email, :phoneNumber, :password, :nbr, :allergies, :isAdmin)');
+    $statement->bindValue(':lastname', 'Lepoittevin');
+    $statement->bindValue(':firstname', 'Mathias');
+    $statement->bindValue(':email', 'mat@tma.fr');
+    $statement->bindValue(':phoneNumber', '0303030303');
+    $statement->bindValue(':password', password_hash('0202', PASSWORD_BCRYPT));
+    $statement->bindValue(':nbr', 4);
+    $statement->bindValue(':allergies', 'RAS');
+    $statement->bindValue(':isAdmin', 1);
+
+    $statement->execute();
 
     /**
  * Création table "reservations

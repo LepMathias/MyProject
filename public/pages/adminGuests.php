@@ -5,6 +5,82 @@ if($_SESSION['admin'] === 1){
     include './includes/adminHeader.php'
     ?>
 
+    <div class="container">
+        <div class="row">
+            <form name="searchGuest" method="post" action="">
+                <label for="nameGuest" class="form-label">Date</label>
+                <input type="text" name="nameGuest" id="nameGuest" class="form-control" placeholder="Recherche de client par Prénom" onkeyup="showGuests(this.value)">
+            </form>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-md-3">
+                <table>
+                    <thead>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                    </thead>
+                    <tbody id="displayGuests">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-7">
+                <form name="guestCard" method="post" action="">
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="form-label" for="lastname">Nom</label>
+                            <input class="form-control" type="text" name="lastname" id="lastname">
+
+                            <label class="form-label" for="phoneNumber">Téléphone</label>
+                            <input class="form-control" type="tel" name="phoneNumber" id="phoneNumber">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label" for="firstname">Prénom</label>
+                            <input class="form-control" type="text" name="firstname" id="firstname">
+
+                            <label class="form-label" for="email">Email</label>
+                            <input class="form-control" type="email" name="email" id="email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="form-label" for="nbrOfGuest">Nombre d'invité par défault</label>
+                            <input class="form-control" type="number" name="nbrOfGuest" id="nbrOfGuest">
+
+                            <label class="form-label" for="allergies">Allergies</label>
+                            <textarea class="form-control" type="text" name="allergies" id="allergies"></textarea>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label" for="birthhday">Date d'anniversaire</label>
+                            <input class="form-control" type="date" name="birthhday" id="birthhday">
+
+                            <input class="form-check-input" type="checkbox" name="blacklist" id="blacklist" value="">
+                            <label class="form-check-label" for="blacklist">Blacklisté</label>
+
+                            <input type="hidden" name="userId" id="userId">
+                            <div class="row justify-content-end">
+                                <button type="submit" class="btn btn-success guestCardForm-btn"><img class="guestCardForm-svg" src='../../src/css/svg/save.svg'/></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <table>
+                <thead>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Nombre de pax</th>
+                </thead>
+                <tbody id="userReservations">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?php
+    include './includes/popUpModal.php';
+    ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5s
         mXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

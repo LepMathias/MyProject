@@ -22,6 +22,7 @@ try {
 
     /**
      * User gestion -> sign_up and log_in
+     *              -> GuestsPage function
      */
     $userManager = new UserManager($pdo);
     if (!empty($_POST['log-in_form'])) {
@@ -35,6 +36,15 @@ try {
         $regStatus = $userManager->addUser(htmlentities($_POST['lastname']), htmlentities($_POST['firstname']),
             htmlspecialchars($_POST['email']), htmlentities($_POST['phoneNumber']), $_POST['password'],
             htmlentities($_POST['defaultNbrGuest']), htmlentities($_POST['allergies']));
+    }
+    if (!empty($_POST['userId'])) {
+        try {
+            $userManager->updateUser(htmlentities($_POST['lastname']), htmlentities($_POST['firstname']),
+                htmlspecialchars($_POST['email']), htmlentities($_POST['phoneNumber']),
+                $_POST['nbrOfGuest'], htmlentities($_POST['allergies']), $_POST['userId']);
+        } catch (Exception $e) {
+            file_put_contents('../../conf/db/dblogs.log', $e->getMessage(), FILE_APPEND);
+        }
     }
 
 

@@ -293,7 +293,7 @@ select #note-select {
 }
 
 /*--------------------------------------------------------------
-# MenusPage
+# AdminMenusPage
 --------------------------------------------------------------*/
 #scd-admin-container {
     margin-top: 148px;
@@ -304,4 +304,24 @@ select #note-select {
     #scd-admin-container {
         margin-top: 0;
     }
+}
+
+/*--------------------------------------------------------------
+# AdminGuestsPage
+--------------------------------------------------------------*/
+.resultGuestSearch {
+    border-bottom: 2px solid #5F9EA0;
+    padding-bottom: 0;
+}
+
+#blacklist {
+    margin-top: 22px;
+}
+
+.guestCardForm-svg {
+    width: 2vw;
+}
+
+.guestCardForm-btn {
+    width: 4vw;
 }

@@ -38,6 +38,29 @@ class UserManager
         }
     }
 
+    public function updateUser(string $lastname, string $firstname, string $email, string $phoneNumber,
+                            string $defaultNbrGuest, string $allergies, string $id)
+    {
+        try {
+            $statement = $this->pdo->prepare("UPDATE users 
+            SET lastname = :lastname, firstname = :firstname, email = :email, phoneNumber = :phoneNumber,
+                defaultNbrGuest = :defaultNbrGuest, allergies = :allergies
+            WHERE id = :id");
+            $statement->bindValue(':lastname', $lastname);
+            $statement->bindValue(':firstname', $firstname);
+            $statement->bindValue(':email', $email);
+            $statement->bindValue(':phoneNumber', $phoneNumber);
+            $statement->bindValue(':defaultNbrGuest', $defaultNbrGuest);
+            $statement->bindValue(':allergies', $allergies);
+            $statement->bindValue(':id', $id);
+
+            $statement->execute();
+        } catch (PDOException $e) {
+            file_put_contents('../...conf/db/dblogs.log', "on adminGuest.php/guestCardForm" . $e->getMessage() .
+                PHP_EOL, FILE_APPEND);
+        }
+    }
+
     public function connectUser(string $email, string $password)
     {
         $statement = $this->pdo->prepare('SELECT * FROM users WHERE email = :email');

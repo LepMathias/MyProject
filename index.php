@@ -28,14 +28,25 @@ $router->map('GET|POST', '/parameters/guests', 'adminGuests', 'adminGuests');
 /**
  * API's
  */
-$router->map('GET|POST', '/availability/[*:q]', function ($q) {
+$router->map('GET', '/availability/[*:q]', function ($q) {
     include "./conf/api/getAvailability.php";
 });
 
-$router->map('GET|POST', '/parameters/reservations/[*:q]', function ($q) {
+$router->map('GET', '/reservations/[*:q]', function ($q) {
     include "./conf/api/getReservations.php";
 });
 
+$router->map('GET', '/guests/[*:q]', function ($q) {
+    include "./conf/api/getGuests.php";
+});
+
+$router->map('GET|POST', '/guest/[*:id]', function ($id) {
+    include "./conf/api/getGuestCard.php";
+});
+
+$router->map('GET|POST', '/reservation/update/[*:id]', function ($id) {
+    include "./conf/api/updateReservation.php";
+});
 
 
 $match = $router->match();

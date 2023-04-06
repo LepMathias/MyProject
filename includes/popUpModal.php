@@ -94,6 +94,48 @@
         </div>
     </div>
 </div>
+<!-- Pop up modal update reservation -->
+<div class="modal fade" id="updateBooking-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modifiez une réservation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form name="reservation" action="#" method="post">
+                    <div class="row">
+                        <div class="col">
+                            <label for="date" class="form-label">Date</label>
+                            <input type="date" name="date" id="date" class="form-control"
+                                   onchange="getAvailability(this.value)" required>
+                        </div>
+                        <div class="col">
+                            <label for="hour" class="form-label">Heure</label>
+                            <select name="hour" class="form-select" id="hour-select" required>
+                            </select>
+                        </div>
+                    </div>
+
+                    <label for="nbrOfGuest" class="form-label">Nombre de personne</label>
+                    <input type="number" name="nbrOfGuest" id="nbrOfGuest" value=""
+                           class="form-control" required>
+
+                    <label for="emailAddress" class="form-label">Adresse e-mail</label>
+                    <input type="email" name="emailAddress" id="email" value=""
+                           class="form-control" required>
+
+                    <label for="allergies" class="form-label">Allergies</label>
+                    <textarea type="text" name="allergies" id="allergies" class="form-control"
+                              rows="5"></textarea>
+
+                    <input name="UpdReservation_form" id="reservationId" value="" type="hidden"/>
+                    <button type="submit" class="btn btn-menu">Enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Pop up modal log-in -->
 <div class="modal fade" id="log-in-modal">
     <div class="modal-dialog modal-dialog-centered">
