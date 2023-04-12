@@ -13,11 +13,17 @@ $statement->execute();
 
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+$i = 0;
 foreach($result as $row) {
-    echo "<tr>";
+    if($i % 2 !== 0){
+        echo "<tr class='backColor'>";
+    } else {
+        echo "<tr>";
+    }
     echo "<td class='resultGuestSearch'>".$row['lastname']."</td>";
     echo "<td class='resultGuestSearch'>".$row['firstname']."</td>";
     echo "<td class='resultGuestSearch'><button class='btn' onclick='displayGuestCard(\"".$row['id']."\")'><img src='../../src/css/svg/pen.svg'/></button></td>";
     echo "<tr>";
+    $i++;
 }
 

@@ -1,5 +1,14 @@
+function getAvailability(date){
+    fetch("/availability/" + date)
+        .then(async function (response) {
+            document.getElementById("hour-select").innerHTML = await response.text();
+        })
+}
+
 $(function($) {
-    <!-- EventListener pop-up modal -->
+    /**
+     *  EventListener pop-up modal
+     */
     $('#schedules').click(function() {
         $('#schedules-modal').modal('show');
     })
@@ -24,13 +33,15 @@ $(function($) {
         $('#sign-up-modal').modal('show');
     })
 
+    /**
+     * log-out btn
+     */
     $('#log-out').click(function() {
         $('location').attr('href', 'logout.php');
     })
 });
-function getAvailability(date){
-    fetch("/availability/" + date)
-        .then(async function (response) {
-            document.getElementById("hour-select").innerHTML = await response.text();
-        })
-}
+const date = document.getElementById('#hour-select');
+
+console.log(date);
+
+

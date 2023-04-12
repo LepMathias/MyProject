@@ -56,6 +56,25 @@ VALUES (:date, :hour, :nbrOfGuest, :lastname, :firstname, :phoneNumber, :allergi
         }
     }
 
+    public function updateReservation(string $date, string $hour, string $nbrOfGuest, string $allergies, string $id)
+    {
+        try {
+            $statement = $this->pdo->prepare("UPDATE reservations
+                                                    SET date = :date, hour = :hour, nbrOfGuest = :nbrOfGuest, allergies = :allergies
+                                                    WHERE id = :id");
+            $statement->bindValue('date', $date);
+            $statement->bindValue('hour', $hour);
+            $statement->bindValue('nbrOfGuest', $nbrOfGuest);
+            $statement->bindValue('allergies', $allergies);
+            $statement->bindValue('id', $id);
+
+            $statement->execute();
+        } catch (PDOException $e) {
+            file_put_contents('../../../db/dblog.log', $e->getMessage(), FILE_APPEND);
+            return $reservationStatus = "FAIL";
+        }
+    }
+
     public function getCountReservations(string $date, string $start, string $end)
     {
         $statement = $this->pdo->prepare("SELECT SUM(nbrOfGuest)

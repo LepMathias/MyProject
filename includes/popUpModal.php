@@ -58,7 +58,7 @@
                                    onchange="getAvailability(this.value)" required>
                         </div>
                         <div class="col">
-                            <label for="hour" class="form-label">Heure</label>
+                            <label for="hour-select" class="form-label">Heure</label>
                             <select name="hour" class="form-select" id="hour-select" required>
                             </select>
                         </div>
@@ -103,33 +103,28 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form name="reservation" action="#" method="post">
+                <form name="reservation" action="" method="post">
                     <div class="row">
                         <div class="col">
                             <label for="date" class="form-label">Date</label>
-                            <input type="date" name="date" id="date" class="form-control"
+                            <input type="date" name="date" id="upd-date" class="form-control" value="2023-05-25"
                                    onchange="getAvailability(this.value)" required>
                         </div>
                         <div class="col">
                             <label for="hour" class="form-label">Heure</label>
-                            <select name="hour" class="form-select" id="hour-select" required>
+                            <select name="hour" class="form-select" id="upd-hour-select" required>
                             </select>
                         </div>
                     </div>
 
                     <label for="nbrOfGuest" class="form-label">Nombre de personne</label>
-                    <input type="number" name="nbrOfGuest" id="nbrOfGuest" value=""
-                           class="form-control" required>
-
-                    <label for="emailAddress" class="form-label">Adresse e-mail</label>
-                    <input type="email" name="emailAddress" id="email" value=""
-                           class="form-control" required>
+                    <input type="number" name="nbrOfGuest" id="upd-nbrOfGuest" class="form-control" required>
 
                     <label for="allergies" class="form-label">Allergies</label>
-                    <textarea type="text" name="allergies" id="allergies" class="form-control"
-                              rows="5"></textarea>
+                    <textarea type="text" name="allergies" id="upd-allergies" class="form-control"
+                              rows="3"></textarea>
 
-                    <input name="UpdReservation_form" id="reservationId" value="" type="hidden"/>
+                    <input name="updReservation_form" id="reservationId" type="hidden"/>
                     <button type="submit" class="btn btn-menu">Enregistrer</button>
                 </form>
             </div>

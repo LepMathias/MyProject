@@ -63,12 +63,17 @@ try {
                 $_POST['allergies']);
         }
     }
+    if (!empty($_POST['updReservation_form'])) {
+        $reservationManager->updateReservation($_POST['date'], $_POST['hour'],
+            $_POST['nbrOfGuest'], $_POST['allergies'], $_POST['updReservation_form']);
+    }
 
 
 
     /**
      * Admin
-     * Upload / Delete / Read pictures for carousel
+     * Upload(create) / Read / Delete
+     * pictures for carousel
      */
     $pictureManager = new PictureManager();
     if (!empty($_FILES['uploadedFile'])) {

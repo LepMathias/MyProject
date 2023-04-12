@@ -8,23 +8,26 @@ if($_SESSION['admin'] === 1){
     <div class="container">
         <div class="row">
             <form name="searchGuest" method="post" action="">
-                <label for="nameGuest" class="form-label">Date</label>
+                <label for="nameGuest" class="form-label">Rechercher un client</label>
                 <input type="text" name="nameGuest" id="nameGuest" class="form-control" placeholder="Recherche de client par Prénom" onkeyup="showGuests(this.value)">
             </form>
         </div>
         <div class="row justify-content-between">
-            <div class="col-md-3">
-                <table>
-                    <thead>
-                        <th>Nom</th>
-                        <th>Prénom</th>
+            <div class="col-md-3 guestPage" >
+                <table id="guestTable">
+                    <thead class="justify-content-around">
+                        <tr class="thead">
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Edit</th>
+                        </tr>
                     </thead>
                     <tbody id="displayGuests">
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-7">
-                <form name="guestCard" method="post" action="">
+            <div class="col-md-7 guestPage">
+                <form name="guestCard" method="post" action="" id="guestCardForm">
                     <div class="row">
                         <div class="col-6">
                             <label class="form-label" for="lastname">Nom</label>
@@ -57,8 +60,8 @@ if($_SESSION['admin'] === 1){
                             <label class="form-check-label" for="blacklist">Blacklisté</label>
 
                             <input type="hidden" name="userId" id="userId">
-                            <div class="row justify-content-end">
-                                <button type="submit" class="btn btn-success guestCardForm-btn"><img class="guestCardForm-svg" src='../../src/css/svg/save.svg'/></button>
+                            <div class="row justify-content-start">
+                                <button type="submit" class="btn btn-success guestCardForm-btn form-control"><img class="guestCardForm-svg" src='../../src/css/svg/save.svg'/></button>
                             </div>
                         </div>
                     </div>
@@ -66,15 +69,24 @@ if($_SESSION['admin'] === 1){
             </div>
         </div>
         <div class="row">
-            <table>
-                <thead>
-                <th>Date</th>
-                <th>Heure</th>
-                <th>Nombre de pax</th>
-                </thead>
-                <tbody id="userReservations">
-                </tbody>
-            </table>
+            <div class="col guestPage">
+                <table id="reservationGuestTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Heure</th>
+                            <th>Nombre de pax</th>
+                            <th>Allergies</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="userReservations">
+
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 

@@ -44,8 +44,8 @@ $router->map('GET|POST', '/guest/[*:id]', function ($id) {
     include "./conf/api/getGuestCard.php";
 });
 
-$router->map('GET|POST', '/reservation/update/[*:id]', function ($id) {
-    include "./conf/api/updateReservation.php";
+$router->map('GET|POST', '/reservation/delete/[*:id]', function ($id) {
+    include "./conf/api/deleteReservation.php";
 });
 
 
