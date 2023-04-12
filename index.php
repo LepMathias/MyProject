@@ -36,7 +36,7 @@ $router->map('GET', '/reservations/[*:q]', function ($q) {
     include "./conf/api/getReservations.php";
 });
 
-$router->map('GET', '/guests/[*:q]', function ($q) {
+$router->map('GET', '/guests/[*:q]/[i:p]', function ($q, $p) {
     include "./conf/api/getGuests.php";
 });
 

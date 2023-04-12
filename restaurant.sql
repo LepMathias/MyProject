@@ -56,7 +56,6 @@ INSERT INTO menus (id, title, description, availability, price) VALUES
 -- --------------------------------------------------------
 
 -- 'schedules' table
-
 CREATE TABLE schedules (
   id int(1) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   day varchar(8) NOT NULL,
@@ -105,12 +104,20 @@ CREATE TABLE users (
 
 -- Insert Users
 INSERT INTO users (id, lastname, firstname, email, phoneNumber, password, defaultNbrGuest, allergies, isAdmin) VALUES
-('ed499078-b079-11ed-9853-e0d55edaff0f', 'Admin', 'Admin', 'admin@lqa.fr', '0202',
+('ed499078-b079-11ed-9853-e0d55edaff0f', 'Admin', 'Admin', 'admin@lqa.fr', '0102030405',
  '$2y$10$BqJaCj7EesNXfAEymSKpB.thi4Dn5eXjGVwvKs/jGVDcQvws7hFsO', '2', '', 1),
-('ed513245-b079-11ed-9853-e0d55edaff0f', 'Dupont', 'Gérard', 'gerard@dpd.fr', '0202',
+('ed513245-b079-11ed-9853-e0d55edaff0f', 'Dupont', 'Gérard', 'gerard@dpd.fr', '0102030405',
  '$2y$10$oqX8k.OI0DyX2hb/zAgkWuhdXcyT.aaJipkCtOnTlFz/8yUtS3Ium', '2', '', 0),
-('ed594d90-b079-11ed-9853-e0d55edaff0f', 'Martinel', 'Jean', 'jean@mtl.fr', '0303',
- '$2y$10$fGGsY6McH.oYVEitBe59Wuvpgd/9ZHSgCIQSQyRaD1zq0BxsiNNai', '2', 'Gluten - Lactose', 0);
+('ed594d90-b079-11ed-9853-e0d55edaff0f', 'Martinel', 'Jean', 'jean@mtl.fr', '0102030405',
+ '$2y$10$fGGsY6McH.oYVEitBe59Wuvpgd/9ZHSgCIQSQyRaD1zq0BxsiNNai', '2', 'Gluten - Lactose', 0),
+('4eb21005-d952-11ed-ad18-1cbfcea3a260', 'Jandre', 'Marlon', 'marlon@jdr.fr', '0102030506',
+ '$2y$10$79V/pYZ1jdUAlFNlGyKe6uOQ2C83IpDBoVoCyv4okVAOGqQg9fa8a', '6', '', 0),
+('f5e1b663-d953-11ed-ad18-1cbfcea3a260', 'Martinez', 'Diego', 'diego@mrt.fr', '0102050607',
+ '$2y$10$g.ZPXwuy/wy6U9edaS/bXeuXSFwCOUIsx7P2IgZxDWgu.hByBL7Yu', '18', 'Arachides - Gluten', 0),
+('afa9eda2-d954-11ed-ad18-1cbfcea3a260', 'Moscoso', 'Joao', 'joao@msc.fr', '0102030405',
+ '$2y$10$poatPGLMXUT8ONqm.x8CDu2fikfZ4xWmGsWwt9l1YS1dG.LScn1hq', '5', 'fruits de mer', 0),
+('f5b96a02-d950-11ed-ad18-1cbfcea3a260', 'Dupond', 'Martin', 'martin@dod.fr', '0102030405',
+ '$2y$10$y1Njt1WXAkCxjmso2jQtPuDu5qabHrSIlnC3b1PLHYWlDNDyV1Dne', '4', 'Arachides', 0);
 -- --------------------------------------------------------
 
 -- 'reservations' table
@@ -131,11 +138,25 @@ CREATE TABLE reservations (
 -- insert reservations
 INSERT INTO reservations (userId, id, date, hour, nbrOfGuest, lastname, firstname, phoneNumber, allergies) VALUES
    ('ed513245-b079-11ed-9853-e0d55edaff0f', 1, '2023-02-16', '12:00', '3', NULL, NULL, NULL, NULL),
-   (NULL, 2, '2023-02-16', '12:15', '5', 'Dupond', 'Albert', '0203040506', 'Gluten'),
-   (NULL, 3, '2023-02-16', '12:30', '2', 'Martin', 'Bernard', '0304050607', 'Lactose'),
-   ('ed594d90-b079-11ed-9853-e0d55edaff0f', 4, '2023-02-16', '12:45', '6', NULL, NULL, NULL, 'Gluten - Lactose'),
-   (NULL, 5, '2023-02-16', '19:00', '2', 'Martin', 'Bernard', '0304050607', 'Lactose'),
-   ('ed513245-b079-11ed-9853-e0d55edaff0f', 6, '2023-02-16', '19:15', '2', NULL, NULL, NULL, NULL),
-   ('ed594d90-b079-11ed-9853-e0d55edaff0f', 7, '2023-02-16', '19:30', '3', NULL, NULL, NULL, 'Gluten - Lactose'),
-   (NULL, 8, '2023-02-16', '19:45', '2', 'Dupond', 'Albert', '0203040506', 'Gluten');
+   ('ed513245-b079-11ed-9853-e0d55edaff0f', 2, '2023-03-16', '19:15', '2', NULL, NULL, NULL, NULL),
+   ('ed513245-b079-11ed-9853-e0d55edaff0f', 3, '2023-04-16', '12:15', '1', NULL, NULL, NULL, NULL),
+   ('ed513245-b079-11ed-9853-e0d55edaff0f', 4, '2023-05-16', '20:45', '4', NULL, NULL, NULL, NULL),
+   ('ed513245-b079-11ed-9853-e0d55edaff0f', 5, '2023-06-16', '19:15', '3', NULL, NULL, NULL, NULL),
+   ('ed513245-b079-11ed-9853-e0d55edaff0f', 6, '2023-07-16', '20:15', '2', NULL, NULL, NULL, NULL),
+   (NULL, 7, '2023-02-16', '12:15', '5', 'Dupond', 'Albert', '0203040506', 'Gluten'),
+   ('ed594d90-b079-11ed-9853-e0d55edaff0f', 8, '2023-02-16', '12:45', '6', NULL, NULL, NULL, 'Gluten - Lactose'),
+   ('ed594d90-b079-11ed-9853-e0d55edaff0f', 9, '2023-03-18', '19:30', '3', NULL, NULL, NULL, 'Gluten - Lactose'),
+   ('ed594d90-b079-11ed-9853-e0d55edaff0f', 10, '2023-04-22', '20:30', '3', NULL, NULL, NULL, 'Gluten - Lactose'),
+   ('ed594d90-b079-11ed-9853-e0d55edaff0f', 11, '2023-05-10', '20:00', '3', NULL, NULL, NULL, 'Gluten - Lactose'),
+   ('ed594d90-b079-11ed-9853-e0d55edaff0f', 12, '2023-05-25', '19:30', '3', NULL, NULL, NULL, 'Gluten - Lactose'),
+   (NULL, 13, '2023-02-16', '12:30', '2', 'Martin', 'Bernard', '0304050607', 'Lactose'),
+   ('f5b96a02-d950-11ed-ad18-1cbfcea3a260', 14, '2023-02-16', '19:30', '3', NULL, NULL, NULL, NULL),
+   (NULL, 15, '2023-02-16', '19:00', '2', 'Martin', 'Bernard', '0304050607', 'Lactose'),
+   ('4eb21005-d952-11ed-ad18-1cbfcea3a260', 16, '2023-11-16', '19:15', '6', NULL, NULL, NULL, NULL),
+   (NULL, 17, '2023-02-16', '19:45', '2', 'Dupond', 'Albert', '0203040506', 'Gluten'),
+   ('afa9eda2-d954-11ed-ad18-1cbfcea3a260', 18, '2023-05-29', '20:30', '3', NULL, NULL, NULL, 'fruits de mer'),
+
+
+
+   ('f5e1b663-d953-11ed-ad18-1cbfcea3a260', 19, '2023-10-13', '19:30', '18', NULL, NULL, NULL, 'gluten');
 -- --------------------------------------------------------

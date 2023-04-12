@@ -9,7 +9,7 @@ if($_SESSION['admin'] === 1){
         <div class="row">
             <form name="searchGuest" method="post" action="">
                 <label for="nameGuest" class="form-label">Rechercher un client</label>
-                <input type="text" name="nameGuest" id="nameGuest" class="form-control" placeholder="Recherche de client par Prénom" onkeyup="showGuests(this.value)">
+                <input type="text" name="nameGuest" id="nameGuest" class="form-control" placeholder="Recherche de client par Prénom" onkeyup="showGuests(this.value, 1)">
             </form>
         </div>
         <div class="row justify-content-between">
@@ -25,6 +25,11 @@ if($_SESSION['admin'] === 1){
                     <tbody id="displayGuests">
                     </tbody>
                 </table>
+                <div aria-label="Page navigation example">
+                    <ul class="pagination" id="pagination">
+
+                    </ul>
+                </div>
             </div>
             <div class="col-md-7 guestPage">
                 <form name="guestCard" method="post" action="" id="guestCardForm">

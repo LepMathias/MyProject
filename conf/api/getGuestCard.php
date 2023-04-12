@@ -12,7 +12,8 @@ $result['user'] = $statement->fetch(PDO::FETCH_ASSOC);
 
 $statement = $pdo->prepare("SELECT id, date, hour, nbrOfguest, allergies
                                     FROM reservations 
-                                    WHERE userId = :id");
+                                    WHERE userId = :id
+                                    ORDER BY date DESC");
 $statement->bindValue(':id', $id);
 $statement->execute();
 $result['reservations'] = $statement->fetchAll(PDO::FETCH_ASSOC);

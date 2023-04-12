@@ -327,6 +327,7 @@ select #note-select {
 }
 
 .guestPage {
+    position: relative;
     margin: 0.5vw;
     padding: 0.5vw;
     border: 2px solid #5F9EA0;
@@ -336,6 +337,7 @@ select #note-select {
 table {
     width: 100%;
 }
+
 thead {
     height: 1vh;
     background-color: #DCDCDC;
@@ -345,3 +347,15 @@ thead {
     background-color: #CCE7E8;
 }
 
+.pastDate {
+    background-color: #E4E4E4;
+}
+
+.pagination{
+    position: absolute;
+    bottom: 0;
+}
+
+.selectedPage {
+    background-color: #5F9EA0;
+}
