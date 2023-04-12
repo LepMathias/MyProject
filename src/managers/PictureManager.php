@@ -50,6 +50,12 @@ class PictureManager
         return array_slice(scandir($dir), 2);
     }
 
+    public function updateFile($file, $newName)
+    {
+        $dir = './src/img/uploads/';
+        rename($dir.$file, $dir.$newName);
+    }
+
     public function deleteFile($file): void
     {
         unlink("./src/img/uploads/$file");

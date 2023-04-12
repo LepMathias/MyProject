@@ -10,7 +10,7 @@ $statement->bindValue(':id', $id);
 $statement->execute();
 $result['user'] = $statement->fetch(PDO::FETCH_ASSOC);
 
-$statement = $pdo->prepare("SELECT id, date, hour, nbrOfguest, allergies
+$statement = $pdo->prepare("SELECT id, date, hour, nbrOfGuest, allergies
                                     FROM reservations 
                                     WHERE userId = :id
                                     ORDER BY date DESC");

@@ -17,6 +17,9 @@ let hour = document.getElementById('upd-hour-select');
 let popNbrOfGuest = document.getElementById('upd-nbrOfGuest');
 let popAllergies = document.getElementById('upd-allergies');
 
+let reservationsTable = document.getElementById('reservationsTable');
+let dateSelect = document.getElementById('date-select');
+
 /**
  * Display availability on booking and updateBooking from
  */
@@ -57,10 +60,79 @@ function erasePaginationChild(){
 function showReservations(date) {
     fetch("/reservations/" + date)
         .then(async function (response) {
-            document.getElementById("displayReservations").innerHTML = await response.text();
+            const result = await response.json();
+
+            let i=0;
+            result.forEach(reservation => {
+                const row = document.createElement("tr");
+
+                if (i % 2 !== 0) {
+                    row.setAttribute('class', 'backColor');
+                }
+                const hour = document.createElement("td");
+                hour.innerHTML = reservation.hour;
+                hour.addEventListener('click', function(){
+                    updateReservation(reservation)
+                })
+                row.appendChild(hour);
+
+                if(reservation.Ulastname){
+                    const Ulastname = document.createElement("td");
+                    Ulastname.innerHTML = reservation.Ulastname;
+                    const link = document.createElement("button");
+                    link.setAttribute('class', 'btn');
+                    link.addEventListener('click', function() {
+                        displayGuestCard(reservation.userId);
+                    })
+                    link.setAttribute('href', '/parameters/guests')
+                    link.appendChild(Ulastname);
+                    row.appendChild(link);
+                    const Ufirstname = document.createElement("td");
+                    Ufirstname.innerHTML = reservation.Ufirstname;
+                    row.appendChild(Ufirstname);
+                    const UphoneNumber = document.createElement("td");
+                    UphoneNumber.innerHTML = reservation.UphoneNumber;
+                    row.appendChild(UphoneNumber);
+                } else {
+                    const lastname = document.createElement("td");
+                    lastname.innerHTML = reservation.lastname;
+                    row.appendChild(lastname);
+                    const firstname = document.createElement("td");
+                    firstname.innerHTML = reservation.firstname;
+                    row.appendChild(firstname);
+                    const phoneNumber = document.createElement("td");
+                    phoneNumber.innerHTML = reservation.phoneNumber;
+                    row.appendChild(phoneNumber);
+                }
+
+                const nbrOfGuest = document.createElement("td");
+                nbrOfGuest.innerHTML = reservation.nbrOfGuest;
+                row.appendChild(nbrOfGuest);
+                const allergies = document.createElement("td");
+                allergies.innerHTML = reservation.allergies;
+                row.appendChild(allergies);
+
+
+                const delBtn = document.createElement('button');
+                delBtn.innerHTML = "Supprimer";
+                delBtn.setAttribute('class', 'btn');
+                delBtn.addEventListener("click", function () {
+                    deleteReservation(reservation.id)
+                });
+                row.appendChild(delBtn);
+
+                reservationsTable.appendChild(row);
+                i++;
+            })
+            /*document.getElementById("displayReservations").innerHTML = await response.text();*/
         })
 }
 
+/**
+ * Display Guests list with search
+ * @param name
+ * @param page
+ */
 function showGuests(name, page) {
     document.getElementById("guestCardForm").reset();
     eraseGuestsChild();
@@ -69,7 +141,9 @@ function showGuests(name, page) {
     fetch("/guests/" + name + "/" + page)
         .then(async function (response) {
             const result = await response.json();
-
+            /**
+             * Pagination of GuestSearch result
+             */
             for (let i=1; i<=result.counts.pages; i++) {
                 const btn = document.createElement("button");
                 btn.setAttribute('class', 'page-link')
@@ -85,6 +159,10 @@ function showGuests(name, page) {
                 el.appendChild(btn);
                 pagination.appendChild(el);
             }
+
+            /**
+             * Display Guests list
+             */
             let i = 0;
             result.guests.forEach(user => {
                 const row = document.createElement("tr");
@@ -118,7 +196,8 @@ function showGuests(name, page) {
 
 
 /**
- * Update reservation form via Parameters/guests
+ * Update reservation
+ * @param reservation
  */
 function updateReservation(reservation) {
     $('#updateBooking-modal').modal('show');
@@ -129,22 +208,26 @@ function updateReservation(reservation) {
     opt.setAttribute('selected', 'selected');
     opt.innerHTML = reservation.hour;
     hour.appendChild(opt);
-    popNbrOfGuest.value = reservation.nbrOfguest;
+    popNbrOfGuest.value = reservation.nbrOfGuest;
     popAllergies.innerHTML = reservation.allergies;
     reservationId.value = reservation.id;
 }
 
 /**
- * Delete reservation from Guest card on Parameters/guests
+ * Delete reservation
+ * @param id
  */
 function deleteReservation(id) {
     fetch("/reservation/delete/" + id)
         .then(async function (response) {
+            showReservations(dateSelect.value);
             displayGuestCard(userId.value);
     })
 }
+
 /**
  * display Guest card with Reservations on Parameters/guests with search
+ * @param id
  */
 function displayGuestCard(id) {
     eraseReservationsChild();

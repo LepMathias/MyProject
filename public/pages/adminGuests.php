@@ -13,7 +13,7 @@ if($_SESSION['admin'] === 1){
             </form>
         </div>
         <div class="row justify-content-between">
-            <div class="col-md-3 guestPage" >
+            <div class="col-md-3 adminSection" >
                 <table id="guestTable">
                     <thead class="justify-content-around">
                         <tr class="thead">
@@ -31,7 +31,7 @@ if($_SESSION['admin'] === 1){
                     </ul>
                 </div>
             </div>
-            <div class="col-md-7 guestPage">
+            <div class="col-md-7 adminSection">
                 <form name="guestCard" method="post" action="" id="guestCardForm">
                     <div class="row">
                         <div class="col-6">
@@ -74,7 +74,7 @@ if($_SESSION['admin'] === 1){
             </div>
         </div>
         <div class="row">
-            <div class="col guestPage">
+            <div class="col adminSection">
                 <table id="reservationGuestTable">
                     <thead>
                         <tr>

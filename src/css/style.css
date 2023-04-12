@@ -1,6 +1,10 @@
 /*--------------------------------------------------------------
 Body of main page and context of display
 --------------------------------------------------------------*/
+.container {
+    width: 100vw;
+}
+
 .main-div {
     background-color: #EEE;
 }
@@ -326,9 +330,9 @@ select #note-select {
     width: 4vw;
 }
 
-.guestPage {
+.adminSection {
     position: relative;
-    margin: 0.5vw;
+    margin: 0.2vw;
     padding: 0.5vw;
     border: 2px solid #5F9EA0;
     border-radius: 5px;

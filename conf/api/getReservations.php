@@ -3,6 +3,7 @@ include './conf/db/confDB.php';
 
     $pdo = new PDO("mysql:host=$HOST;dbname=$DB", $USER, $PWD);
 
+
     $statement = $pdo->prepare("SELECT reservations.*,
                                         users.lastname AS Ulastname,
                                         users.firstname AS Ufirstname,
@@ -18,7 +19,7 @@ include './conf/db/confDB.php';
     /**
      * Alternative : envoie données en json pour traitement en front
      */
-    /* echo json_encode($result);*/
+     echo json_encode($result);
 
     /**
      * Ajour d'un paramètre service pour trie des réservations
@@ -33,6 +34,9 @@ include './conf/db/confDB.php';
         }
     }*/
 
+
+
+/*
     echo "<table class='mt-3'>
 <tr class='displayReservations'>
 <th>Heure</th>
@@ -61,3 +65,4 @@ include './conf/db/confDB.php';
 
     }
     echo "</table>";
+*/

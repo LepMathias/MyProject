@@ -79,6 +79,9 @@ try {
     if (!empty($_FILES['uploadedFile'])) {
         $pictureManager->isUploadSuccessful($_FILES['uploadedFile']);
     }
+    if (!empty($_POST['oldName'])) {
+        $pictureManager->updateFile($_POST['oldName'], $_POST['newName']);
+    }
     if (!empty($_POST['file'])) {
         $pictureManager->deleteFile($_POST['file']);
     }
