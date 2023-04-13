@@ -204,7 +204,7 @@ function showGuests(name, page) {
 /**
  * Create reservation from Guest card
  */
-function createReservation(id){
+function createReservation(){
     $('#booking-modal').modal('show');
     bookLastname.value = lastname.value;
     bookFirstname.value = firstname.value;

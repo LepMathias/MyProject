@@ -66,8 +66,10 @@ if($_SESSION['admin'] === 1){
 
                             <input type="hidden" name="userId" id="userId">
                             <div class="row justify-content-start">
-                                <button type="submit" class="btn btn-success guestCardForm-btn form-control"><img class="guestCardForm-svg" src='../../src/css/svg/save.svg'/></button>
-                                <button type="button" class="btn btn-warning" id="booking" onclick="createReservation(userId.value)">Réservez une table</button>
+                                <button type="submit" class="btn btn-success guestCardForm-btn form-control">
+                                    <img class="guestCardForm-svg" src='../../src/css/svg/save.svg'/></button>
+                                <button type="button" class="btn btn-warning" id="booking"
+                                        onclick="createReservation()">Réservez une table</button>
                             </div>
                         </div>
                     </div>
