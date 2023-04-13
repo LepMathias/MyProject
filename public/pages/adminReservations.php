@@ -11,8 +11,16 @@ if($_SESSION['admin'] === 1){
                     <label for="date" class="form-label">Date</label>
                     <input type="date" name="date-select" id="date-select" class="form-control" onchange="showReservations(this.value)">
                 </form>
+                <div>
+                    <form name="maxOfGuest" method="post" action="">
+                        <label for="maxOfGuest" class="form-label">Nombre de personne max par service</label>
+                        <input class="form-control" type="text" name="maxOfGuest" id="maxOfGuest" value="<?=$maxOfGuest->getContent()?>">
+                        <input type="hidden" name="settingId" id="settingId" value="<?=$maxOfGuest->getId()?>">
+                        <button type="submit" class="btn btn-success mt-1">Valider</button>
+                    </form>
+                </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="row adminSection" id="displayReservations">
                     <table>
                         <thead>
@@ -33,14 +41,7 @@ if($_SESSION['admin'] === 1){
 
                 </div>
             </div>
-            <div class="col-md-2">
-                <form name="maxOfGuest" method="post" action="">
-                    <label for="maxOfGuest" class="form-label">Nombre de personne max par service</label>
-                    <input class="form-control" type="text" name="maxOfGuest" id="maxOfGuest" value="<?=$maxOfGuest->getContent()?>">
-                    <input type="hidden" name="settingId" id="settingId" value="<?=$maxOfGuest->getId()?>">
-                    <button type="submit" class="btn btn-success mt-1">Valider</button>
-                </form>
-            </div>
+
         </div>
 
     </div>

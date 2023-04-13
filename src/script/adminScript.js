@@ -20,6 +20,13 @@ let popAllergies = document.getElementById('upd-allergies');
 let reservationsTable = document.getElementById('reservationsTable');
 let dateSelect = document.getElementById('date-select');
 
+let bookLastname = document.getElementById('book-lastname');
+let bookFirstname = document.getElementById('book-firstname');
+let bookPhoneNumber = document.getElementById('book-phoneNumber');
+let bookEmail = document.getElementById('book-emailAddress');
+let bookNbrOfGuest = document.getElementById('book-nbrOfGuest');
+let bookAllergies = document.getElementById('book-allergies');
+
 /**
  * Display availability on booking and updateBooking from
  */
@@ -194,6 +201,18 @@ function showGuests(name, page) {
         });
 }
 
+/**
+ * Create reservation from Guest card
+ */
+function createReservation(id){
+    $('#booking-modal').modal('show');
+    bookLastname.value = lastname.value;
+    bookFirstname.value = firstname.value;
+    bookPhoneNumber.value = phoneNumber.value;
+    bookEmail.value = email.value;
+    bookNbrOfGuest.value = nbrOfGuest.value;
+    bookAllergies.innerHTML = allergies.value;
+}
 
 /**
  * Update reservation
@@ -283,3 +302,4 @@ function displayGuestCard(id) {
             })
         })
 }
+

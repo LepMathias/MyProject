@@ -55,12 +55,12 @@ try {
     $reservationManager = new ReservationManager($pdo);
     if (!empty($_POST['reservation_form'])) {
         if (isset($_SESSION['id'])) {
-            $reservationStatus = $reservationManager->addReservationUId($_POST['date'], $_POST['hour'],
-                $_POST['nbrOfGuest'], $_SESSION['id'], $_POST['allergies']);
+            $reservationStatus = $reservationManager->addReservationUId($_POST['book-date'], $_POST['book-hour'],
+                $_POST['book-nbrOfGuest'], $_SESSION['id'], $_POST['book-allergies']);
         } else {
-            $reservationStatus = $reservationManager->addReservation($_POST['date'], $_POST['hour'],
-                $_POST['nbrOfGuest'], $_POST['lastname'], $_POST['firstname'], $_POST['phoneNumber'],
-                $_POST['allergies']);
+            $reservationStatus = $reservationManager->addReservation($_POST['book-date'], $_POST['book-hour'],
+                $_POST['book-nbrOfGuest'], $_POST['book-lastname'], $_POST['book-firstname'], $_POST['book-phoneNumber'],
+                $_POST['book-allergies']);
         }
     }
     if (!empty($_POST['updReservation_form'])) {

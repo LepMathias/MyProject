@@ -54,37 +54,37 @@
                     <div class="row">
                         <div class="col">
                             <label for="date" class="form-label">Date</label>
-                            <input type="date" name="date" id="date" class="form-control"
+                            <input type="date" name="book-date" id="date" class="form-control"
                                    onchange="getAvailability(this.value)" required>
                         </div>
                         <div class="col">
                             <label for="hour-select" class="form-label">Heure</label>
-                            <select name="hour" class="form-select" id="hour-select" required>
+                            <select name="book-hour" class="form-select" id="hour-select" required>
                             </select>
                         </div>
                     </div>
                     <?php if (!isset($_SESSION['user']) | $_SESSION['admin'] === 1): ?>
                     <label for="lastname" class="form-label">Nom</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control" required>
+                    <input type="text" name="book-lastname" id="book-lastname" class="form-control" required>
 
                     <label for="firstname" class="form-label">Prénom</label>
-                    <input type="text" name="firstname" id="firstname" class="form-control" required>
+                    <input type="text" name="book-firstname" id="book-firstname" class="form-control" required>
                     <?php endif;?>
 
                     <label for="nbrOfGuest" class="form-label">Nombre de personne</label>
-                    <input type="number" name="nbrOfGuest" id="nbrOfGuest" value="<?=$_SESSION['defaultNbrGuest']?>"
+                    <input type="number" name="book-nbrOfGuest" id="book-nbrOfGuest" value="<?=$_SESSION['defaultNbrGuest']?>"
                            class="form-control" required>
 
                     <label for="emailAddress" class="form-label">Adresse e-mail</label>
-                    <input type="email" name="emailAddress" id="emailAddress" value="<?=$_SESSION['email']?>"
+                    <input type="email" name="book-emailAddress" id="book-emailAddress" value="<?=$_SESSION['email']?>"
                            class="form-control" required>
 
                     <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
-                    <input type="tel" name="phoneNumber" id="phoneNumber" value="<?=$_SESSION['phoneNumber']?>"
+                    <input type="tel" name="book-phoneNumber" id="book-phoneNumber" value="<?=$_SESSION['phoneNumber']?>"
                            class="form-control" required pattern="^((\+)33|0)[1-9](\d{2}){4}$">
 
                     <label for="allergies" class="form-label">Allergies</label>
-                    <textarea type="text" name="allergies" id="allergies" class="form-control"
+                    <textarea type="text" name="book-allergies" id="book-allergies" class="form-control"
                               rows="5"><?=$_SESSION['allergies']?></textarea>
 
                     <input name="reservation_form" value="newReservation" type="hidden"/>
