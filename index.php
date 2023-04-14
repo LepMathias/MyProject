@@ -32,7 +32,7 @@ $router->map('GET', '/availability/[*:q]', function ($q) {
     include "./conf/api/getAvailability.php";
 });
 
-$router->map('GET', '/reservations/[*:q]', function ($q) {
+$router->map('GET', '/reservations/[*:date]/[*:service]', function ($date, $service) {
     include "./conf/api/getReservations.php";
 });
 

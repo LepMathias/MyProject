@@ -22,8 +22,35 @@ class SchedulesManager
         return $statement->fetchAll();
     }
 
+    public function getDay($q) {
+        switch (date('l', strtotime($q))) {
+            case 'Monday':
+                $day = 'Lundi';
+                break;
+            case 'Tuesday':
+                $day = 'Mardi';
+                break;
+            case 'Wednesday':
+                $day = 'Mercredi';
+                break;
+            case 'Thursday':
+                $day = 'Jeudi';
+                break;
+            case 'Friday':
+                $day = 'Vendredi';
+                break;
+            case 'Saturday':
+                $day = 'Samedi';
+                break;
+            case 'Sunday':
+                $day = 'Dimanche';
+                break;
+        }
+        return $day;
+    }
     public function getSchedulesDay($day)
     {
+
         $statement = $this->pdo->prepare('SELECT * FROM schedules WHERE day = :day');
         $statement->bindValue(':day', $day);
         $statement->setFetchMode(PDO::FETCH_CLASS, Schedules::class);
@@ -46,7 +73,7 @@ class SchedulesManager
         $statement->execute();
     }
 
-    public function getAvailableHours(string $day, $nbrOnLunch, $nbrOnDiner, $maxOfGuest): array
+    public function getAvailableHours(string $day, $nbrOnLunch, $nbrOnDiner, $maxOfGuest, $schedulesGap): array
     {
         $availableHours = [];
         $schedule = $this->getSchedulesDay($day);
@@ -60,7 +87,7 @@ class SchedulesManager
             $countEndLunch = strtotime($schedule->getEndDej()) - 3600;
             $availableLunchHours[] = $schedule->getStartDej();
             while ($countLunch < $countEndLunch) {
-                $countLunch += 900;
+                $countLunch += $schedulesGap;
                 $availableLunchHours[] = date('H:i', $countLunch);
             }
             $availableHours['lunch'] = $availableLunchHours;
@@ -75,7 +102,7 @@ class SchedulesManager
             $countEndDiner = strtotime($schedule->getEndDin()) - 3600;
             $availableDinerHours[] = $schedule->getStartDin();
             while ($countDiner < $countEndDiner) {
-                $countDiner += 900;
+                $countDiner += $schedulesGap;
                 $availableDinerHours[] = date('H:i', $countDiner);
             }
             $availableHours['diner'] = $availableDinerHours;

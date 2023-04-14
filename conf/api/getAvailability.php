@@ -13,35 +13,14 @@ $schedulesManager = new SchedulesManager($pdo);
 $settingManager = new SettingManager($pdo);
 $reservationManager = new ReservationManager($pdo);
 
-$date = date('l', strtotime($q));
-    switch ($date) {
-        case 'Monday':
-            $day = 'Lundi';
-            break;
-        case 'Tuesday':
-            $day = 'Mardi';
-            break;
-        case 'Wednesday':
-            $day = 'Mercredi';
-            break;
-        case 'Thursday':
-            $day = 'Jeudi';
-            break;
-        case 'Friday':
-            $day = 'Vendredi';
-            break;
-        case 'Saturday':
-            $day = 'Samedi';
-            break;
-        case 'Sunday':
-            $day = 'Dimanche';
-            break;
-    }
+
 $maxOfGuest = $settingManager->getSettings('maxOfGuest');
+$schedulesGap = $settingManager->getSettings('schedulesGap');
+$day = $schedulesManager->getDay($q);
 $schedulesDay = $schedulesManager->getSchedulesDay($day);
 $nbrOnLunch = $reservationManager->getCountReservations($q, $schedulesDay->getStartDej(), $schedulesDay->getEndDej());
 $nbrOnDiner = $reservationManager->getCountReservations($q, $schedulesDay->getStartDin(), $schedulesDay->getEndDin());
-$availability = $schedulesManager->getAvailableHours($day, $nbrOnLunch[0], $nbrOnDiner[0], $maxOfGuest->getContent());
+$availability = $schedulesManager->getAvailableHours($day, $nbrOnLunch[0], $nbrOnDiner[0], $maxOfGuest->getContent(), $schedulesGap->getContent());
 
 
 if($availability['lunch'] === "close"){

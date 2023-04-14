@@ -26,7 +26,6 @@ if($_SESSION['admin'] === 1){
                 <form name="schedulesFooterForm" method="post" action="#">
                     <label class="form-label" for="schedulesFooter">Horaires en pied de page</label>
                     <input class="form-control" type="text" name="schedulesFooter" id="schedulesFooter" value="<?=$schedulesFooter->getContent()?>">
-                    <input type="hidden" name="settingId" id="settingId" value="<?=$schedulesFooter->getId()?>">
                     <button class="btn btn-success mt-3" type="submit">Mettre à jour</button>
                 </form>
             </div>

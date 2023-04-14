@@ -58,15 +58,15 @@ if($_SESSION['admin'] === 1){
                             <textarea class="form-control" type="text" name="allergies" id="allergies"></textarea>
                         </div>
                         <div class="col-6">
-                            <label class="form-label" for="birthhday">Date d'anniversaire</label>
-                            <input class="form-control" type="date" name="birthhday" id="birthhday">
+                            <label class="form-label" for="birthdate">Date d'anniversaire</label>
+                            <input class="form-control" type="date" name="birthdate" id="birthdate">
 
                             <input class="form-check-input" type="checkbox" name="blacklist" id="blacklist" value="">
                             <label class="form-check-label" for="blacklist">Blacklisté</label>
 
                             <input type="hidden" name="userId" id="userId">
                             <div class="row justify-content-start">
-                                <button type="submit" class="btn btn-success guestCardForm-btn form-control">
+                                <button type="submit" class="btn btn-success guestCardForm-btn form-control" id="upd-guestCard">
                                     <img class="guestCardForm-svg" src='../../src/css/svg/save.svg'/></button>
                                 <button type="button" class="btn btn-warning" id="booking"
                                         onclick="createReservation()">Réservez une table</button>

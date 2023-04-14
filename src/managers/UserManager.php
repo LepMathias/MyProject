@@ -15,15 +15,16 @@ class UserManager
         $this->pdo = $pdo;
     }
 
-    public function addUser(string $lastname, string $firstname, string $email, string $phoneNumber,
+    public function addUser(string $lastname, string $firstname, string $birthdate, string $email, string $phoneNumber,
                             string $password, int $defaultNbrGuest, string $allergies)
     {
         try {
             $statement = $this->pdo->prepare('INSERT INTO users 
-                    (id, lastname, firstname, email, phoneNumber, password, defaultNbrGuest, allergies) 
-                    VALUES (UUID(), :lastname, :firstname,:email, :phoneNumber, :password, :defaultNbrGuest, :allergies)');
+                    (id, lastname, firstname, birthdate, email, phoneNumber, password, defaultNbrGuest, allergies) 
+                    VALUES (UUID(), :lastname, :firstname, :birthdate, :email, :phoneNumber, :password, :defaultNbrGuest, :allergies)');
             $statement->bindValue(':lastname', $lastname);
             $statement->bindValue(':firstname', $firstname);
+            $statement->bindValue(':birthdate', $birthdate);
             $statement->bindValue(':email', $email);
             $statement->bindValue(':phoneNumber', $phoneNumber);
             $statement->bindValue(':password', password_hash($password, PASSWORD_BCRYPT));
@@ -38,16 +39,17 @@ class UserManager
         }
     }
 
-    public function updateUser(string $lastname, string $firstname, string $email, string $phoneNumber,
+    public function updateUser(string $lastname, string $firstname, string $birthdate, string $email, string $phoneNumber,
                             string $defaultNbrGuest, string $allergies, string $id)
     {
         try {
             $statement = $this->pdo->prepare("UPDATE users 
-            SET lastname = :lastname, firstname = :firstname, email = :email, phoneNumber = :phoneNumber,
+            SET lastname = :lastname, firstname = :firstname, birthdate = :birthdate, email = :email, phoneNumber = :phoneNumber,
                 defaultNbrGuest = :defaultNbrGuest, allergies = :allergies
             WHERE id = :id");
             $statement->bindValue(':lastname', $lastname);
             $statement->bindValue(':firstname', $firstname);
+            $statement->bindValue(':birthdate', $birthdate);
             $statement->bindValue(':email', $email);
             $statement->bindValue(':phoneNumber', $phoneNumber);
             $statement->bindValue(':defaultNbrGuest', $defaultNbrGuest);

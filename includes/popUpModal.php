@@ -53,13 +53,13 @@
                 <form name="reservation" action="#" method="post">
                     <div class="row">
                         <div class="col">
-                            <label for="date" class="form-label">Date</label>
-                            <input type="date" name="book-date" id="date" class="form-control"
+                            <label for="book-date" class="form-label">Date</label>
+                            <input type="date" name="book-date" id="book-date" class="form-control"
                                    onchange="getAvailability(this.value)" required>
                         </div>
                         <div class="col">
                             <label for="hour-select" class="form-label">Heure</label>
-                            <select name="book-hour" class="form-select" id="hour-select" required>
+                            <select name="hour" class="form-select" id="book-hour-select" required>
                             </select>
                         </div>
                     </div>
@@ -166,17 +166,20 @@
                 <form name="log-in" action="#" method="post">
                     <div class="row">
                         <div class="col">
-                            <label for="lastname" class="form-label">Nom</label>
-                            <input type="text" name="lastname" id="lastname" class="form-control"
+                            <label for="reg-lastname" class="form-label">Nom</label>
+                            <input type="text" name="lastname" id="reg-lastname" class="form-control"
                                    placeholder="Lettre uniquement" required>
                         </div>
 
                         <div class="col">
-                            <label for="firstname" class="form-label">Prénom</label>
-                            <input type="text" name="firstname" id="firstname" class="form-control"
+                            <label for="reg-firstname" class="form-label">Prénom</label>
+                            <input type="text" name="firstname" id="reg-firstname" class="form-control"
                                    placeholder="Lettre uniquement" required>
                         </div>
                     </div>
+
+                    <label for="reg-birthdate" class="form-label">Date de naissance (facultatif)</label>
+                    <input type="date" name="birthdate" id="reg-birthdate" class="form-control">
 
                     <label for="email" class="form-label">E-mail</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="email@valide.fr"
@@ -193,11 +196,11 @@
                         </div>
                     </div>
 
-                    <label for="defaultNbrGuest" class="form-label">Nombre de convive par défault</label>
+                    <label for="defaultNbrGuest" class="form-label">Nombre de convive par défault (facultatif)</label>
                     <input type="number" name="defaultNbrGuest" id="defaultNbrGuest" class="form-control" min="1"
                            max="20" required>
 
-                    <label for="allergies" class="form-label">Allergies</label>
+                    <label for="allergies" class="form-label">Allergies (facultatif)</label>
                     <textarea type="text" name="allergies" id="allergies" class="form-control" rows="4"></textarea>
 
                     <input name="sign-up_form" value="newGuest" type="hidden"/>

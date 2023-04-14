@@ -34,13 +34,13 @@ try {
     }
     if (!empty($_POST['sign-up_form'])) {
         $regStatus = $userManager->addUser(htmlentities($_POST['lastname']), htmlentities($_POST['firstname']),
-            htmlspecialchars($_POST['email']), htmlentities($_POST['phoneNumber']), $_POST['password'],
-            htmlentities($_POST['defaultNbrGuest']), htmlentities($_POST['allergies']));
+            $_POST['birthdate'], htmlspecialchars($_POST['email']), htmlentities($_POST['phoneNumber']),
+            $_POST['password'], htmlentities($_POST['defaultNbrGuest']), htmlentities($_POST['allergies']));
     }
     if (!empty($_POST['userId'])) {
         try {
             $userManager->updateUser(htmlentities($_POST['lastname']), htmlentities($_POST['firstname']),
-                htmlspecialchars($_POST['email']), htmlentities($_POST['phoneNumber']),
+                $_POST['birthdate'], htmlspecialchars($_POST['email']), htmlentities($_POST['phoneNumber']),
                 $_POST['nbrOfGuest'], htmlentities($_POST['allergies']), $_POST['userId']);
         } catch (Exception $e) {
             file_put_contents('../../conf/db/dblogs.log', $e->getMessage(), FILE_APPEND);
@@ -104,9 +104,7 @@ try {
         $schedulesManager->updateSchedules($_POST['startDej'], $_POST['endDej'], $_POST['startDin'], $_POST['endDin'],
             $_POST['id']);
     }
-    if(!empty($_POST['schedulesFooter'])) {
-        $settingManager->updateSetting($_POST['schedulesFooter'], $_POST['settingId']);
-    }
+
     /**
      * Read / Display Schedules
      */
@@ -152,14 +150,28 @@ try {
     /**
      * Update / Read setting -> Limit of Guest per service
      */
+    if(!empty($_POST['schedulesFooter'])) {
+        $value = [
+            [
+                "name" => "schedulesFooter",
+                "content" => $_POST['schedulesFooter']
+            ]
+        ];
+        $settingManager->updateSetting($value);
+    }
     if(!empty($_POST['maxOfGuest'])){
-        $settingManager->updateSetting($_POST['maxOfGuest'], $_POST['settingId']);
+        $value = [
+            "maxOfGuest" => $_POST['maxOfGuest'],
+            "schedulesGap" => $_POST['schedulesGap']
+        ];
+        $settingManager->updateSetting($value);
     }
     $maxOfGuest = $settingManager->getSettings('maxOfGuest');
+    $schedulesGap = $settingManager->getSettings('schedulesGap');
 
 
 } catch (Exception $e) {
-    file_put_contents('db/dblogs.log', "on indexController.php " . $e->getMessage() .
+    file_put_contents('../../conf/db/dblogs.log', $e->getMessage() .
         PHP_EOL, FILE_APPEND);
     echo "<script>alert('Une erreur s\'est produite. Contactez l\'administrateur')</script>";
 }

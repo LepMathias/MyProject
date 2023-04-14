@@ -23,15 +23,17 @@ class SettingManager
         return $statement->fetch();
     }
 
-    public function updateSetting($setting, $id)
+    public function updateSetting($value)
     {
 
-        $statement = $this->pdo->prepare('UPDATE settings
+            $statement = $this->pdo->prepare('UPDATE settings
                                                 SET content = :setting
-                                                WHERE id = :id');
-        $statement->bindValue(':setting', $setting);
-        $statement->bindValue(':id', $id);
+                                                WHERE name = :name');
+            foreach ($value as $key => $content) {
+                $statement->bindValue(':setting', $content);
+                $statement->bindValue(':name', $key);
 
-        $statement->execute();
+                $statement->execute();
+            }
     }
 }

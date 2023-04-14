@@ -1,8 +1,30 @@
 <?php
+
+use managers\SchedulesManager;
+
 include './conf/db/confDB.php';
+require './src/managers/SchedulesManager.php';
 
     $pdo = new PDO("mysql:host=$HOST;dbname=$DB", $USER, $PWD);
 
+$schedulesManager = new SchedulesManager($pdo);
+$day = $schedulesManager->getDay($date);
+$schedulesDay = $schedulesManager->getSchedulesDay($day);
+
+switch($service) {
+    case "both":
+        $start = $schedulesDay->getStartDej();
+        $end = $schedulesDay->getEndDin();
+        break;
+    case "lunch":
+        $start = $schedulesDay->getStartDej();
+        $end = $schedulesDay->getEndDej();
+        break;
+    case "diner":
+        $start = $schedulesDay->getStartDin();
+        $end = $schedulesDay->getEndDin();
+        break;
+}
 
     $statement = $pdo->prepare("SELECT reservations.*,
                                         users.lastname AS Ulastname,
@@ -11,58 +33,14 @@ include './conf/db/confDB.php';
                                         FROM reservations 
                                     LEFT JOIN users 
                                         ON reservations.userId = users.id 
-                                    WHERE date = :q");
-    $statement->bindValue(':q', $q);
+                                    WHERE date = :date
+                                    AND hour BETWEEN :start AND :end
+                                    ORDER BY hour ASC");
+    $statement->bindValue(':date', $date);
+    $statement->bindValue(':start', $start);
+    $statement->bindValue(':end', $end);
 
     $statement->execute();
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-    /**
-     * Alternative : envoie données en json pour traitement en front
-     */
+
      echo json_encode($result);
-
-    /**
-     * Ajour d'un paramètre service pour trie des réservations
-     */
-    /*if(isset($_GET['h'])){
-        $h = $_GET['h'];
-        if($_GET('Déjeuner')){
-            $newResult = [];
-            foreach($result as $row){
-                if()
-            }
-        }
-    }*/
-
-
-
-/*
-    echo "<table class='mt-3'>
-<tr class='displayReservations'>
-<th>Heure</th>
-<th>Nom</th>
-<th>Prénom</th>
-<th>Téléphone</th>
-<th>Nbr de cvts</th>
-<th>allergies</th>
-</tr>";
-
-    foreach($result as $row) {
-        echo "<tr class='displayReservations'>";
-        echo "<td>".$row['hour']."</td>";
-        if(isset($row['Ulastname'])){
-            echo "<td>".$row['Ulastname']."</td>";
-            echo "<td>".$row['Ufirstname']."</td>";
-            echo "<td>".$row['UphoneNumber']."</td>";
-        } else {
-            echo "<td>".$row['lastname']."</td>";
-            echo "<td>".$row['firstname']."</td>";
-            echo "<td>".$row['phoneNumber']."</td>";
-        }
-        echo "<td>".$row['nbrOfGuest']."</td>";
-        echo "<td>".$row['allergies']."</td>";
-        echo "<tr>";
-
-    }
-    echo "</table>";
-*/

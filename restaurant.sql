@@ -86,7 +86,8 @@ CREATE TABLE settings (
 -- Insert settings
 INSERT INTO settings (id, name, content) VALUES
 (1, 'maxOfGuest', '12'),
-(2, 'schedulesFooter', 'du mercredi au dimanche de 12h00 à 14h00 et de 19h00 à 21h30');
+(2, 'schedulesGap', '900'),
+(3, 'schedulesFooter', 'du mercredi au dimanche de 12h00 à 14h00 et de 19h00 à 21h30');
 -- --------------------------------------------------------
 
 -- 'users' table
@@ -94,6 +95,7 @@ CREATE TABLE users (
   id char(36) NOT NULL PRIMARY KEY,
   lastname varchar(50) NOT NULL,
   firstname varchar(50) NOT NULL,
+  birthdate char(10) DEFAULT NULL,
   email varchar(254) NOT NULL,
   phoneNumber varchar(20) NOT NULL,
   password char(72) NOT NULL,
@@ -103,20 +105,20 @@ CREATE TABLE users (
 );
 
 -- Insert Users
-INSERT INTO users (id, lastname, firstname, email, phoneNumber, password, defaultNbrGuest, allergies, isAdmin) VALUES
-('ed499078-b079-11ed-9853-e0d55edaff0f', 'Admin', 'Admin', 'admin@lqa.fr', '0102030405',
+INSERT INTO users (id, lastname, firstname, birthdate, email, phoneNumber, password, defaultNbrGuest, allergies, isAdmin) VALUES
+('ed499078-b079-11ed-9853-e0d55edaff0f', 'Admin', 'Admin', '', 'admin@lqa.fr', '0102030405',
  '$2y$10$BqJaCj7EesNXfAEymSKpB.thi4Dn5eXjGVwvKs/jGVDcQvws7hFsO', '2', '', 1),
-('ed513245-b079-11ed-9853-e0d55edaff0f', 'Dupont', 'Gérard', 'gerard@dpd.fr', '0102030405',
+('ed513245-b079-11ed-9853-e0d55edaff0f', 'Dupont', 'Gérard', '', 'gerard@dpd.fr', '0102030405',
  '$2y$10$oqX8k.OI0DyX2hb/zAgkWuhdXcyT.aaJipkCtOnTlFz/8yUtS3Ium', '2', '', 0),
-('ed594d90-b079-11ed-9853-e0d55edaff0f', 'Martinel', 'Jean', 'jean@mtl.fr', '0102030405',
+('ed594d90-b079-11ed-9853-e0d55edaff0f', 'Martinel', 'Jean', '', 'jean@mtl.fr', '0102030405',
  '$2y$10$fGGsY6McH.oYVEitBe59Wuvpgd/9ZHSgCIQSQyRaD1zq0BxsiNNai', '2', 'Gluten - Lactose', 0),
-('4eb21005-d952-11ed-ad18-1cbfcea3a260', 'Jandre', 'Marlon', 'marlon@jdr.fr', '0102030506',
+('4eb21005-d952-11ed-ad18-1cbfcea3a260', 'Jandre', 'Marlon', '', 'marlon@jdr.fr', '0102030506',
  '$2y$10$79V/pYZ1jdUAlFNlGyKe6uOQ2C83IpDBoVoCyv4okVAOGqQg9fa8a', '6', '', 0),
-('f5e1b663-d953-11ed-ad18-1cbfcea3a260', 'Martinez', 'Diego', 'diego@mrt.fr', '0102050607',
+('f5e1b663-d953-11ed-ad18-1cbfcea3a260', 'Martinez', 'Diego', '', 'diego@mrt.fr', '0102050607',
  '$2y$10$g.ZPXwuy/wy6U9edaS/bXeuXSFwCOUIsx7P2IgZxDWgu.hByBL7Yu', '18', 'Arachides - Gluten', 0),
-('afa9eda2-d954-11ed-ad18-1cbfcea3a260', 'Moscoso', 'Joao', 'joao@msc.fr', '0102030405',
+('afa9eda2-d954-11ed-ad18-1cbfcea3a260', 'Moscoso', 'Joao', '', 'joao@msc.fr', '0102030405',
  '$2y$10$poatPGLMXUT8ONqm.x8CDu2fikfZ4xWmGsWwt9l1YS1dG.LScn1hq', '5', 'fruits de mer', 0),
-('f5b96a02-d950-11ed-ad18-1cbfcea3a260', 'Dupond', 'Martin', 'martin@dod.fr', '0102030405',
+('f5b96a02-d950-11ed-ad18-1cbfcea3a260', 'Dupond', 'Martin', '', 'martin@dod.fr', '0102030405',
  '$2y$10$y1Njt1WXAkCxjmso2jQtPuDu5qabHrSIlnC3b1PLHYWlDNDyV1Dne', '4', 'Arachides', 0);
 -- --------------------------------------------------------
 

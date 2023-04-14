@@ -3,29 +3,35 @@ let displayGuests = document.getElementById('displayGuests');
 let search = document.getElementById('nameGuest');
 let pagination = document.getElementById('pagination');
 
+let updGuestCard = document.getElementById('upd-guestCard');
 let lastname = document.getElementById('lastname');
 let firstname = document.getElementById('firstname');
 let phoneNumber = document.getElementById('phoneNumber');
+let birthdate = document.getElementById('birthdate');
 let email = document.getElementById('email');
 let nbrOfGuest = document.getElementById('nbrOfGuest');
 let allergies = document.getElementById('allergies');
 let userId = document.getElementById('userId');
 
+
 let reservationId = document.getElementById('reservationId');
-let date = document.getElementById('upd-date');
-let hour = document.getElementById('upd-hour-select');
-let popNbrOfGuest = document.getElementById('upd-nbrOfGuest');
-let popAllergies = document.getElementById('upd-allergies');
+let updDate = document.getElementById('upd-date');
+let updHour = document.getElementById('upd-hour-select');
+let updNbrOfGuest = document.getElementById('upd-nbrOfGuest');
+let updAllergies = document.getElementById('upd-allergies');
 
 let reservationsTable = document.getElementById('reservationsTable');
 let dateSelect = document.getElementById('date-select');
+let service = document.getElementById('service');
 
+let bookDate = document.getElementById('book-date');
 let bookLastname = document.getElementById('book-lastname');
 let bookFirstname = document.getElementById('book-firstname');
 let bookPhoneNumber = document.getElementById('book-phoneNumber');
 let bookEmail = document.getElementById('book-emailAddress');
 let bookNbrOfGuest = document.getElementById('book-nbrOfGuest');
 let bookAllergies = document.getElementById('book-allergies');
+let bookHour = document.getElementById("book-hour-select");
 
 /**
  * Display availability on booking and updateBooking from
@@ -33,17 +39,25 @@ let bookAllergies = document.getElementById('book-allergies');
 function getAvailability(date){
     fetch("/availability/" + date)
         .then(async function (response) {
-            document.getElementById("upd-hour-select").innerHTML = await response.text();
+            let data = await response.text();
+            updHour.innerHTML = data;
+            bookHour.innerHTML = data;
         })
 }
 
 /**
  * Reset display on Parameters/guests
  */
-function eraseReservationsChild(){
+function eraseGuestReservationsChild(){
     let child = displayReservations.childNodes;
     while(child.length>0){
         displayReservations.removeChild(displayReservations.lastChild);
+    }
+}
+function eraseReservationsChild(){
+    let child = reservationsTable.childNodes;
+    while(child.length>0){
+        reservationsTable.removeChild(reservationsTable.lastChild);
     }
 }
 function eraseGuestsChild(){
@@ -61,11 +75,13 @@ function erasePaginationChild(){
 }
 
 /**
- * Display all reservation on Parameters/reservations
+ * Display all reservations on Parameters/reservations
  * @param date
+ * @param service
  */
-function showReservations(date) {
-    fetch("/reservations/" + date)
+function showReservations(date, service) {
+    eraseReservationsChild();
+    fetch("/reservations/" + date + "/" + service)
         .then(async function (response) {
             const result = await response.json();
 
@@ -85,15 +101,17 @@ function showReservations(date) {
 
                 if(reservation.Ulastname){
                     const Ulastname = document.createElement("td");
-                    Ulastname.innerHTML = reservation.Ulastname;
+
                     const link = document.createElement("button");
+                    link.innerHTML = reservation.Ulastname;
                     link.setAttribute('class', 'btn');
                     link.addEventListener('click', function() {
-                        displayGuestCard(reservation.userId);
-                    })
+                        localStorage.setItem("userId", reservation.userId);
+                        document.location = '/parameters/guests';
+                        })
                     link.setAttribute('href', '/parameters/guests')
-                    link.appendChild(Ulastname);
-                    row.appendChild(link);
+                    Ulastname.appendChild(link);
+                    row.appendChild(Ulastname);
                     const Ufirstname = document.createElement("td");
                     Ufirstname.innerHTML = reservation.Ufirstname;
                     row.appendChild(Ufirstname);
@@ -143,7 +161,7 @@ function showReservations(date) {
 function showGuests(name, page) {
     document.getElementById("guestCardForm").reset();
     eraseGuestsChild();
-    eraseReservationsChild();
+    eraseGuestReservationsChild();
     erasePaginationChild();
     fetch("/guests/" + name + "/" + page)
         .then(async function (response) {
@@ -212,6 +230,9 @@ function createReservation(){
     bookEmail.value = email.value;
     bookNbrOfGuest.value = nbrOfGuest.value;
     bookAllergies.innerHTML = allergies.value;
+    bookDate.addEventListener('change', function(){
+        getAvailability(this.value);
+    })
 }
 
 /**
@@ -221,14 +242,14 @@ function createReservation(){
 function updateReservation(reservation) {
     $('#updateBooking-modal').modal('show');
     console.log(reservation);
-    date.value = reservation.date;
+    updDate.value = reservation.date;
     const opt = document.createElement("option");
     opt.setAttribute('value', reservation.hour);
     opt.setAttribute('selected', 'selected');
     opt.innerHTML = reservation.hour;
-    hour.appendChild(opt);
-    popNbrOfGuest.value = reservation.nbrOfGuest;
-    popAllergies.innerHTML = reservation.allergies;
+    updHour.appendChild(opt);
+    updNbrOfGuest.value = reservation.nbrOfGuest;
+    updAllergies.innerHTML = reservation.allergies;
     reservationId.value = reservation.id;
 }
 
@@ -239,8 +260,11 @@ function updateReservation(reservation) {
 function deleteReservation(id) {
     fetch("/reservation/delete/" + id)
         .then(async function (response) {
-            showReservations(dateSelect.value);
-            displayGuestCard(userId.value);
+            if(/reservation/.test(window.location.href)) {
+                showReservations(dateSelect.value);
+            } else {
+                displayGuestCard(userId.value);
+            }
     })
 }
 
@@ -249,17 +273,21 @@ function deleteReservation(id) {
  * @param id
  */
 function displayGuestCard(id) {
-    eraseReservationsChild();
+    eraseGuestReservationsChild();
     fetch("/guest/" + id)
         .then(async function (response) {
             const result = await response.json();
             lastname.value = result.user.lastname;
             firstname.value = result.user.firstname;
+            birthdate.value = result.user.birthdate;
             phoneNumber.value = result.user.phoneNumber;
             email.value = result.user.email;
             nbrOfGuest.value = result.user.defaultNbrGuest;
             allergies.innerHTML = result.user.allergies;
             userId.value = result.user.id;
+            updGuestCard.addEventListener('click', function () {
+                localStorage.setItem("userId", result.user.id);
+            });
 
             let i = 0;
             result.reservations.forEach(reservation => {
@@ -303,3 +331,45 @@ function displayGuestCard(id) {
         })
 }
 
+$(function($) {
+    var userId = localStorage.getItem("userId");
+
+    if(userId != null) {
+        displayGuestCard(userId);
+        localStorage.removeItem("userId");
+    }
+
+    /**
+     *  EventListener pop-up modal
+     */
+    $('#schedules').click(function() {
+        $('#schedules-modal').modal('show');
+    })
+    $('#allergy').click(function() {
+        $('#allergy-modal').modal('show');
+    })
+    $('#booking').click(function() {
+        $('#booking-modal').modal('show');
+    })
+    $('#log-in').click(function() {
+        $('#log-in-modal').modal('show');
+    })
+    $('#sign-up').click(function() {
+        $('#sign-up-modal').modal('show');
+    })
+    $('#reg-modal-btn').click(function() {
+        $('#reg-modal').modal('hide');
+        $('#log-in-modal').modal('show');
+    })
+    $('#reg-modal-btn-2').click(function() {
+        $('#reg-modal').modal('hide');
+        $('#sign-up-modal').modal('show');
+    })
+
+    /**
+     * log-out btn
+     */
+    $('#log-out').click(function() {
+        $('location').attr('href', 'logout.php');
+    })
+});
