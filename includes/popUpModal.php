@@ -59,7 +59,7 @@
                         </div>
                         <div class="col">
                             <label for="hour-select" class="form-label">Heure</label>
-                            <select name="hour" class="form-select" id="book-hour-select" required>
+                            <select name="book-hour" class="form-select" id="book-hour-select" required>
                             </select>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                               rows="5"><?=$_SESSION['allergies']?></textarea>
 
                     <input name="reservation_form" value="newReservation" type="hidden"/>
-                    <button type="submit" class="btn btn-menu">Réserver</button>
+                    <button type="submit" class="btn btn-form">Réserver</button>
                 </form>
             </div>
         </div>
@@ -108,7 +108,7 @@
                         <div class="col">
                             <label for="date" class="form-label">Date</label>
                             <input type="date" name="date" id="upd-date" class="form-control" value="2023-05-25"
-                                   onchange="getAvailability(this.value)" required>
+                                   onchange="getAvailability(this.value)" onclick="getAvailability(this.value)" required>
                         </div>
                         <div class="col">
                             <label for="hour" class="form-label">Heure</label>
@@ -125,7 +125,7 @@
                               rows="3"></textarea>
 
                     <input name="updReservation_form" id="reservationId" type="hidden"/>
-                    <button type="submit" class="btn btn-menu">Enregistrer</button>
+                    <button type="submit" class="btn btn-form" id="upd-btn-form">Enregistrer</button>
                 </form>
             </div>
         </div>
@@ -148,7 +148,7 @@
                     <input type="password" name="password" id="password" class="form-control" required>
 
                     <input name="log-in_form" value="tryToLog" type="hidden"/>
-                    <button type="submit" class="btn btn-menu">Se connecter</button>
+                    <button type="submit" class="btn btn-form">Se connecter</button>
                 </form>
             </div>
         </div>
@@ -204,7 +204,7 @@
                     <textarea type="text" name="allergies" id="allergies" class="form-control" rows="4"></textarea>
 
                     <input name="sign-up_form" value="newGuest" type="hidden"/>
-                    <button type="submit" class="btn btn-menu">S'Inscrire</button>
+                    <button type="submit" class="btn btn-form">S'Inscrire</button>
                 </form>
             </div>
         </div>
@@ -231,7 +231,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="text-center">Une erreur est survenu lors de la création de ovtre compte<br><br>
+                    <p class="text-center">Une erreur est survenu lors de la création de votre compte<br><br>
                         Si le problème persiste, contactez l'administrateur du site</p>
                         <button type="button" id="reg-modal-btn-2">Inscrivez-vous</button>
                 </div>

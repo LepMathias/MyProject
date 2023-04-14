@@ -6,6 +6,7 @@ class User
     private string $id;
     private string $lastname;
     private string $firstname;
+    private string $birthdate;
     private string $email;
     private int $phoneNumber;
     private string $password;
@@ -56,6 +57,14 @@ class User
     public function getFirstname(): string
     {
         return $this->firstname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBirthdate(): string
+    {
+        return $this->birthdate;
     }
 
     /**

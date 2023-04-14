@@ -11,6 +11,7 @@ $router = new AltoRouter();
  */
 $router->map('GET|POST', '/', 'index', 'home');
 $router->map('GET|POST', '/menus', 'menus', 'menus');
+$router->map('GET', '/profile', 'profile', 'profile');
 $router->map('GET', '/logout', 'logout', 'logout');
 
 /**

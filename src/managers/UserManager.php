@@ -77,6 +77,7 @@ class UserManager
                     $_SESSION['admin'] = $user->getisAdmin();
                     $_SESSION['firstname'] = $user->getFirstname();
                     $_SESSION['lastname'] = $user->getLastname();
+                    $_SESSION['birthdate'] = $user->getBirthdate();
                     $_SESSION['defaultNbrGuest'] = $user->getDefaultNbrGuest();
                     $_SESSION['email'] = $user->getEmail();
                     $_SESSION['phoneNumber'] = $user->getPhoneNumber();

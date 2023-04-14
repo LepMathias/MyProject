@@ -1,3 +1,5 @@
+let profile = document.getElementById('profile');
+
 let displayReservations = document.getElementById('userReservations');
 let displayGuests = document.getElementById('displayGuests');
 let search = document.getElementById('nameGuest');
@@ -13,12 +15,12 @@ let nbrOfGuest = document.getElementById('nbrOfGuest');
 let allergies = document.getElementById('allergies');
 let userId = document.getElementById('userId');
 
-
 let reservationId = document.getElementById('reservationId');
 let updDate = document.getElementById('upd-date');
 let updHour = document.getElementById('upd-hour-select');
 let updNbrOfGuest = document.getElementById('upd-nbrOfGuest');
 let updAllergies = document.getElementById('upd-allergies');
+let updBtnForm = document.getElementById('upd-btn-form');
 
 let reservationsTable = document.getElementById('reservationsTable');
 let dateSelect = document.getElementById('date-select');
@@ -106,7 +108,7 @@ function showReservations(date, service) {
                     link.innerHTML = reservation.Ulastname;
                     link.setAttribute('class', 'btn');
                     link.addEventListener('click', function() {
-                        localStorage.setItem("userId", reservation.userId);
+                        localStorage.setItem("guestId", reservation.userId);
                         document.location = '/parameters/guests';
                         })
                     link.setAttribute('href', '/parameters/guests')
@@ -172,7 +174,7 @@ function showGuests(name, page) {
             for (let i=1; i<=result.counts.pages; i++) {
                 const btn = document.createElement("button");
                 btn.setAttribute('class', 'page-link')
-                if(i == result.counts.selectedPage) {
+                if(i === result.counts.selectedPage) {
                     btn.setAttribute('class', 'page-link selectedPage');
                 }
                 btn.addEventListener('click', function() {
@@ -286,7 +288,7 @@ function displayGuestCard(id) {
             allergies.innerHTML = result.user.allergies;
             userId.value = result.user.id;
             updGuestCard.addEventListener('click', function () {
-                localStorage.setItem("userId", result.user.id);
+                localStorage.setItem("guestId", result.user.id);
             });
 
             let i = 0;
@@ -305,13 +307,16 @@ function displayGuestCard(id) {
                 }
 
                 if(new Date(reservation.date).getTime() > Date.now()) {
-                    const updBtn = document.createElement('button');
-                    updBtn.innerHTML = "Modifier";
-                    updBtn.setAttribute('class', 'btn');
-                    updBtn.addEventListener("click", function () {
-                        updateReservation(reservation)
-                    });
-                    row.appendChild(updBtn);
+                    if(/parameters/.test(window.location.href)){
+                        const updBtn = document.createElement('button');
+                        updBtn.innerHTML = "Modifier";
+                        updBtn.setAttribute('class', 'btn');
+                        updBtn.addEventListener("click", function () {
+                            updateReservation(reservation)
+                            localStorage.setItem("guestId", result.user.id);
+                        });
+                        row.appendChild(updBtn);
+                    }
                     const delBtn = document.createElement('button');
                     delBtn.innerHTML = "Supprimer";
                     delBtn.setAttribute('class', 'btn');
@@ -330,15 +335,16 @@ function displayGuestCard(id) {
             })
         })
 }
+const guestId = localStorage.getItem("guestId");
+if(guestId != null) {
+    displayGuestCard(guestId);
+    localStorage.removeItem("guestId");
+}
+if(userId != null) {
+    displayGuestCard(userId.value);
+}
 
 $(function($) {
-    var userId = localStorage.getItem("userId");
-
-    if(userId != null) {
-        displayGuestCard(userId);
-        localStorage.removeItem("userId");
-    }
-
     /**
      *  EventListener pop-up modal
      */

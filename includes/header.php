@@ -34,7 +34,9 @@
                         <a href="/logout" class="btn" id="log-out"><h6>Log out</h6></a></li>
                     <?php elseif(isset($_SESSION) && $_SESSION['admin'] === 0): ?>
                     <li class="nav-btn">
-                        <p class="text-center"><?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></p></li>
+                        <p class=""><?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></p></li>
+                    <li class="nav-btn">
+                        <a href="/profile" class="btn" id="profile"><h6>Profil</h6></a></li>
                     <li class="nav-btn">
                         <a href="/logout" class="btn" id="log-out"><h6>Log out</h6></a></li>
                     <?php else: ?>
