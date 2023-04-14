@@ -61,7 +61,3 @@ include './includes/popUpModal.php';
 include './includes/footer.php';
 include './includes/scriptsIncluded.php';
 ?>
-
-</body>
-
-</html>

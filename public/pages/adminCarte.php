@@ -122,11 +122,7 @@ if($_SESSION['admin'] === 1){
 
     <?php
     include './includes/scriptsIncluded.php';
-    ?>
 
-    </body>
-    </html>
-<?php
 } else {
     header('location: /');
 }

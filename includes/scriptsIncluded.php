@@ -17,3 +17,6 @@
         <?php } ?>
     });
 </script>
+
+</body>
+</html>

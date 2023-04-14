@@ -33,14 +33,9 @@ if($_SESSION['admin'] === 1){
         </div>
     </div>
 
-<?php
-include './includes/scriptsIncluded.php';
-?>
+    <?php
+    include './includes/scriptsIncluded.php';
 
-    </body>
-    </html>
-
-<?php
 } else {
     header('location: /');
 }
