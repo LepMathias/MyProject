@@ -4,7 +4,7 @@ if($_SESSION['admin'] === 1){
     include './includes/header.php';
     include './includes/adminHeader.php'
     ?>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-2">
                 <form name="reservationsCheck" method="post" action="">
@@ -19,29 +19,8 @@ if($_SESSION['admin'] === 1){
                     </select>
 
                 </form>
-                <div>
-                    <form name="maxOfGuest" method="post" action="">
-                        <label for="maxOfGuest" class="form-label">Nombre de personne max par service</label>
-                        <input class="form-control" type="text" name="maxOfGuest" id="maxOfGuest" value="<?=$maxOfGuest->getContent()?>">
-
-                        <label for="schedulesGap" class="form-label">Créneau de réservation</label>
-                        <select class="form-control" type="text" name="schedulesGap" id="schedulesGap">
-                            <option value="900"
-                                <?php if($schedulesGap->getContent() === "900") : ?>
-                                    selected
-                                <?php endif; ?>
-                            >15 minutes</option>
-                            <option value="1800"
-                                <?php if($schedulesGap->getContent() === "1800") : ?>
-                                    selected
-                                <?php endif; ?>
-                            >30 minutes</option>
-                        </select>
-                        <button type="submit" class="btn btn-success mt-1">Valider</button>
-                    </form>
-                </div>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div class="row adminSection" id="displayReservations">
                     <table>
                         <thead>
@@ -59,10 +38,29 @@ if($_SESSION['admin'] === 1){
 
                         </tbody>
                     </table>
-
                 </div>
             </div>
+            <div class="col-md-2">
+                <form name="maxOfGuest" method="post" action="">
+                    <label for="maxOfGuest" class="form-label">Nombre de personne max par service</label>
+                    <input class="form-control" type="text" name="maxOfGuest" id="maxOfGuest" value="<?=$maxOfGuest->getContent()?>">
 
+                    <label for="schedulesGap" class="form-label">Créneau de réservation</label>
+                    <select class="form-select" type="text" name="schedulesGap" id="schedulesGap">
+                        <option value="900"
+                            <?php if($schedulesGap->getContent() === "900") : ?>
+                                selected
+                            <?php endif; ?>
+                        >15 minutes</option>
+                        <option value="1800"
+                            <?php if($schedulesGap->getContent() === "1800") : ?>
+                                selected
+                            <?php endif; ?>
+                        >30 minutes</option>
+                    </select>
+                    <button type="submit" class="btn btn-success mt-1">Valider</button>
+                </form>
+            </div>
         </div>
 
     </div>

@@ -97,10 +97,11 @@ CREATE TABLE users (
   firstname varchar(50) NOT NULL,
   birthdate char(10) DEFAULT NULL,
   email varchar(254) NOT NULL,
-  phoneNumber varchar(20) NOT NULL,
+  phoneNumber varchar(20) DEFAULT NULL,
   password char(72) NOT NULL,
   defaultNbrGuest varchar(2) DEFAULT NULL,
   allergies varchar(150) DEFAULT NULL,
+  status varchar(255) DEFAULT NULL,
   isAdmin int(1) DEFAULT 0
 );
 

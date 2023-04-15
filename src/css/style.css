@@ -191,8 +191,9 @@ select #note-select {
     background-color: #F0F8FF;
     min-height: inherit;
     padding: 0.5vw;
+    margin: 0.5vw;
     position: relative;
-    top: 10px;
+
 }
 
 /*--------------------------------------------------------------
@@ -229,7 +230,7 @@ select #note-select {
 # MenusPage
 --------------------------------------------------------------*/
 #scd-container {
-    margin-top: 180px;
+    margin-top: 100px;
 }
 
 .menus {
@@ -304,8 +305,12 @@ select #note-select {
 # AdminMenusPage
 --------------------------------------------------------------*/
 #scd-admin-container {
-    margin-top: 148px;
+    margin-top: 80px;
     background-color: #F8F8FF;
+}
+
+.btn-adminHeader {
+    width: 3vw;
 }
 
 @media (max-width: 700px) {

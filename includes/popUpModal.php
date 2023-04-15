@@ -73,7 +73,7 @@
 
                     <label for="nbrOfGuest" class="form-label">Nombre de personne</label>
                     <input type="number" name="book-nbrOfGuest" id="book-nbrOfGuest" value="<?=$_SESSION['defaultNbrGuest']?>"
-                           class="form-control" required>
+                           class="form-control">
 
                     <label for="emailAddress" class="form-label">Adresse e-mail</label>
                     <input type="email" name="book-emailAddress" id="book-emailAddress" value="<?=$_SESSION['email']?>"

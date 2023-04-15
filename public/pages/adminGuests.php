@@ -61,8 +61,11 @@ if($_SESSION['admin'] === 1){
                             <label class="form-label" for="birthdate">Date d'anniversaire</label>
                             <input class="form-control" type="date" name="birthdate" id="birthdate">
 
-                            <input class="form-check-input" type="checkbox" name="blacklist" id="blacklist" value="">
-                            <label class="form-check-label" for="blacklist">Blacklisté</label>
+                            <label for="status" class="form-label">Status</label>
+                            <select class="form-select" type="text" name="status" id="status">
+                                <option value="VIP">VIP</option>
+                                <option value="blackliste">blacklisté</option>
+                            </select>
 
                             <input type="hidden" name="userId" id="userId">
                             <div class="row justify-content-start">
