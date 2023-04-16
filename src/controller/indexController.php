@@ -38,13 +38,13 @@ try {
             $_POST['password'], htmlentities($_POST['defaultNbrGuest']), htmlentities($_POST['allergies']));
     }
     if (!empty($_POST['userId'])) {
-        try {
-            $userManager->updateUser(htmlentities($_POST['lastname']), htmlentities($_POST['firstname']),
-                $_POST['birthdate'], htmlspecialchars($_POST['email']), htmlentities($_POST['phoneNumber']),
-                $_POST['nbrOfGuest'], htmlentities($_POST['allergies']), $_POST['userId']);
-        } catch (Exception $e) {
-            file_put_contents('../../conf/db/dblogs.log', $e->getMessage(), FILE_APPEND);
-        }
+        $userManager->updateUser(htmlentities($_POST['lastname']), htmlentities($_POST['firstname']),
+            $_POST['birthdate'], htmlspecialchars($_POST['email']), htmlentities($_POST['phoneNumber']),
+            $_POST['nbrOfGuest'], htmlentities($_POST['allergies']), $_POST['userId']);
+    }
+    if (!empty($_POST['createAdmin'])) {
+        $userManager->addAdmin(htmlentities($_POST['adminLastname']), htmlentities($_POST['adminFirstname']),
+            htmlspecialchars($_POST['adminEmail']), $_POST['adminPassword']);
     }
 
 

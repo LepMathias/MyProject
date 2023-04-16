@@ -23,7 +23,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a href="/menus" class="btn" id="menusPage"><p>Carte et Menus</p></a></li>
-                        <?php if(isset($_SESSION) && $_SESSION['admin'] === 1): ?>
+                        <?php if(isset($_SESSION) && $_SESSION['admin'] === 1 || 2): ?>
                             <li>
                                 <a class="dropdown-item" id="param" href="/parameters/reservations"><h6>Paramètres</h6></a></li>
                             <li class="nav-btn">
@@ -44,9 +44,13 @@
                 <a href="/" class="btn" id="homePage"><h1 class="logo">Le Quai Antique</h1></a>
             </div>
             <div class="col-md-3">
-                <?php if(isset($_SESSION)): ?>
-                <p><?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></p>
-                <?php endif; ?>
+                <?php if(isset($_SESSION)):
+                    if($_SESSION['admin'] === 2):?>
+                        <a class="btn" id="newAdmin-btn" href="/admin/users"><p><?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></p></a>
+                    <?php else:?>
+                        <p><?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></p>
+                    <?php endif;
+                endif;?>
             </div>
         </nav>
     </div>

@@ -360,6 +360,11 @@ thead {
     background-color: #CCE7E8;
 }
 
+.VIP {
+    color: darkred;
+    font-weight: bold;
+}
+
 .pastDate {
     background-color: #E4E4E4;
 }
@@ -371,4 +376,8 @@ thead {
 
 .selectedPage {
     background-color: #5F9EA0;
+}
+
+#reservationGuestTable>tr {
+    height: 48px;
 }

@@ -29,7 +29,8 @@ switch($service) {
     $statement = $pdo->prepare("SELECT reservations.*,
                                         users.lastname AS Ulastname,
                                         users.firstname AS Ufirstname,
-                                        users.phoneNumber AS UphoneNumber
+                                        users.phoneNumber AS UphoneNumber, 
+                                        users.status AS Ustatus
                                         FROM reservations 
                                     LEFT JOIN users 
                                         ON reservations.userId = users.id 

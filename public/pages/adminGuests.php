@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['admin'] === 1){
+if($_SESSION['admin'] === 1 || 2){
     include './includes/header.php';
     include './includes/adminHeader.php'
     ?>
@@ -63,6 +63,7 @@ if($_SESSION['admin'] === 1){
 
                             <label for="status" class="form-label">Status</label>
                             <select class="form-select" type="text" name="status" id="status">
+                                <option value="Normal">Normal</option>
                                 <option value="VIP">VIP</option>
                                 <option value="blackliste">blacklisté</option>
                             </select>

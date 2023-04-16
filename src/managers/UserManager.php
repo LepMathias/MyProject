@@ -39,6 +39,24 @@ class UserManager
         }
     }
 
+    public function addAdmin(string $lastname, string $firstname, string $email, string $password): void
+    {
+        try {
+            $statement = $this->pdo->prepare('INSERT INTO users 
+                    (id, lastname, firstname, email, password, isAdmin) 
+                    VALUES (UUID(), :lastname, :firstname, :email, :password, :isAdmin)');
+            $statement->bindValue(':lastname', $lastname);
+            $statement->bindValue(':firstname', $firstname);
+            $statement->bindValue(':email', $email);
+            $statement->bindValue(':password', password_hash($password, PASSWORD_BCRYPT));
+            $statement->bindValue(':isAdmin', 1);
+
+            $statement->execute();
+        } catch (PDOException $e) {
+            file_put_contents('../../../db/dblogs.log', $e->getMessage() . PHP_EOL, FILE_APPEND);
+        }
+    }
+
     public function updateUser(string $lastname, string $firstname, string $birthdate, string $email, string $phoneNumber,
                             string $defaultNbrGuest, string $allergies, string $id)
     {

@@ -23,6 +23,7 @@ $router->map('GET|POST', '/parameters/carte', 'adminCarte', 'adminCarte');
 $router->map('GET|POST', '/parameters/menus', 'adminMenus', 'adminMenus');
 $router->map('GET|POST', '/parameters/schedules', 'adminSchedules', 'adminSchedules');
 $router->map('GET|POST', '/parameters/guests', 'adminGuests', 'adminGuests');
+$router->map('GET|POST', '/admin/users', 'adminUsers', 'adminUsers');
 
 
 
@@ -37,7 +38,7 @@ $router->map('GET', '/reservations/[*:date]/[*:service]', function ($date, $serv
     include "./conf/api/getReservations.php";
 });
 
-$router->map('GET', '/guests/[*:q]/[i:p]', function ($q, $p) {
+$router->map('GET', '/guests/[*:q]/[i:p]?', function ($q, $p) {
     include "./conf/api/getGuests.php";
 });
 
@@ -48,6 +49,15 @@ $router->map('GET|POST', '/guest/[*:id]', function ($id) {
 $router->map('GET|POST', '/reservation/delete/[*:id]', function ($id) {
     include "./conf/api/deleteReservation.php";
 });
+
+$router->map('GET|POST', '/admins', function () {
+    include "./conf/api/getAdmins.php";
+});
+
+$router->map('GET|POST', '/user/delete/[*:id]', function ($id) {
+    include "./conf/api/deleteUser.php";
+});
+
 
 
 $match = $router->match();

@@ -101,14 +101,15 @@ CREATE TABLE users (
   password char(72) NOT NULL,
   defaultNbrGuest varchar(2) DEFAULT NULL,
   allergies varchar(150) DEFAULT NULL,
-  status varchar(255) DEFAULT NULL,
+  status varchar(255) DEFAULT 'Normal',
   isAdmin int(1) DEFAULT 0
 );
 
 -- Insert Users
 INSERT INTO users (id, lastname, firstname, birthdate, email, phoneNumber, password, defaultNbrGuest, allergies, isAdmin) VALUES
-('ed499078-b079-11ed-9853-e0d55edaff0f', 'Admin', 'Admin', '', 'admin@lqa.fr', '0102030405',
- '$2y$10$BqJaCj7EesNXfAEymSKpB.thi4Dn5eXjGVwvKs/jGVDcQvws7hFsO', '2', '', 1),
+
+('ed499078-b079-11ed-9853-e0d55edaff0f', 'Admin', 'Master', '', 'admin@lqa.fr', '0102030405',
+ '$2y$10$BqJaCj7EesNXfAEymSKpB.thi4Dn5eXjGVwvKs/jGVDcQvws7hFsO', '2', '', 2),
 ('ed513245-b079-11ed-9853-e0d55edaff0f', 'Dupont', 'Gérard', '', 'gerard@dpd.fr', '0102030405',
  '$2y$10$oqX8k.OI0DyX2hb/zAgkWuhdXcyT.aaJipkCtOnTlFz/8yUtS3Ium', '2', '', 0),
 ('ed594d90-b079-11ed-9853-e0d55edaff0f', 'Martinel', 'Jean', '', 'jean@mtl.fr', '0102030405',

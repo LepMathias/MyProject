@@ -1,4 +1,5 @@
-let profile = document.getElementById('profile');
+
+let newAdminBtn = document.getElementById('newAdmin-btn');
 
 let displayReservations = document.getElementById('userReservations');
 let displayGuests = document.getElementById('displayGuests');
@@ -13,6 +14,7 @@ let birthdate = document.getElementById('birthdate');
 let email = document.getElementById('email');
 let nbrOfGuest = document.getElementById('nbrOfGuest');
 let allergies = document.getElementById('allergies');
+let status = document.getElementById('status');
 let userId = document.getElementById('userId');
 
 let reservationId = document.getElementById('reservationId');
@@ -20,7 +22,6 @@ let updDate = document.getElementById('upd-date');
 let updHour = document.getElementById('upd-hour-select');
 let updNbrOfGuest = document.getElementById('upd-nbrOfGuest');
 let updAllergies = document.getElementById('upd-allergies');
-let updBtnForm = document.getElementById('upd-btn-form');
 
 let reservationsTable = document.getElementById('reservationsTable');
 let dateSelect = document.getElementById('date-select');
@@ -94,6 +95,7 @@ function showReservations(date, service) {
                 if (i % 2 !== 0) {
                     row.setAttribute('class', 'backColor');
                 }
+
                 const hour = document.createElement("td");
                 hour.innerHTML = reservation.hour;
                 hour.addEventListener('click', function(){
@@ -103,20 +105,27 @@ function showReservations(date, service) {
 
                 if(reservation.Ulastname){
                     const Ulastname = document.createElement("td");
-
                     const link = document.createElement("button");
                     link.innerHTML = reservation.Ulastname;
                     link.setAttribute('class', 'btn');
+                    if(reservation.Ustatus === 'VIP') {
+                        console.log('VIP');
+                        link.setAttribute('class', 'btn VIP');
+                    }
                     link.addEventListener('click', function() {
                         localStorage.setItem("guestId", reservation.userId);
                         document.location = '/parameters/guests';
                         })
-                    link.setAttribute('href', '/parameters/guests')
                     Ulastname.appendChild(link);
                     row.appendChild(Ulastname);
+
                     const Ufirstname = document.createElement("td");
                     Ufirstname.innerHTML = reservation.Ufirstname;
+                    if(reservation.status === 'VIP') {
+                        Ufirstname.setAttribute('class', 'VIP');
+                    }
                     row.appendChild(Ufirstname);
+
                     const UphoneNumber = document.createElement("td");
                     UphoneNumber.innerHTML = reservation.UphoneNumber;
                     row.appendChild(UphoneNumber);
@@ -124,9 +133,11 @@ function showReservations(date, service) {
                     const lastname = document.createElement("td");
                     lastname.innerHTML = reservation.lastname;
                     row.appendChild(lastname);
+
                     const firstname = document.createElement("td");
                     firstname.innerHTML = reservation.firstname;
                     row.appendChild(firstname);
+
                     const phoneNumber = document.createElement("td");
                     phoneNumber.innerHTML = reservation.phoneNumber;
                     row.appendChild(phoneNumber);
@@ -135,10 +146,20 @@ function showReservations(date, service) {
                 const nbrOfGuest = document.createElement("td");
                 nbrOfGuest.innerHTML = reservation.nbrOfGuest;
                 row.appendChild(nbrOfGuest);
+
                 const allergies = document.createElement("td");
                 allergies.innerHTML = reservation.allergies;
                 row.appendChild(allergies);
 
+                if(window.location.href.indexOf("parameters") !== -1){
+                    const updBtn = document.createElement('button');
+                    updBtn.innerHTML = "Modifier";
+                    updBtn.setAttribute('class', 'btn');
+                    updBtn.addEventListener("click", function () {
+                        updateReservation(reservation);
+                    });
+                    row.appendChild(updBtn);
+                }
 
                 const delBtn = document.createElement('button');
                 delBtn.innerHTML = "Supprimer";
@@ -159,39 +180,75 @@ function showReservations(date, service) {
  * Display Guests list with search
  * @param name
  * @param page
+ * @param isAdmin
  */
-function showGuests(name, page) {
+function showGuests(name, page ) {
     document.getElementById("guestCardForm").reset();
     eraseGuestsChild();
     eraseGuestReservationsChild();
     erasePaginationChild();
-    fetch("/guests/" + name + "/" + page)
-        .then(async function (response) {
-            const result = await response.json();
-            /**
-             * Pagination of GuestSearch result
-             */
-            for (let i=1; i<=result.counts.pages; i++) {
-                const btn = document.createElement("button");
-                btn.setAttribute('class', 'page-link')
-                if(i === result.counts.selectedPage) {
-                    btn.setAttribute('class', 'page-link selectedPage');
+        fetch("/guests/" + name + "/" + page)
+            .then(async function (response) {
+                let result = await response.json();
+                /**
+                 * Pagination of GuestSearch result
+                 */
+                for (let i=1; i<=result.counts.pages; i++) {
+                    const btn = document.createElement("button");
+                    btn.setAttribute('class', 'page-link')
+                    if(i === result.counts.selectedPage) {
+                        btn.setAttribute('class', 'page-link selectedPage');
+                    }
+                    btn.addEventListener('click', function() {
+                        showGuests(search.value, i);
+                    })
+                    btn.innerHTML = i;
+                    const el = document.createElement("li");
+                    el.setAttribute('class', 'page-item')
+                    el.appendChild(btn);
+                    pagination.appendChild(el);
                 }
-                btn.addEventListener('click', function() {
-                    showGuests(search.value, i);
-                })
-                btn.innerHTML = i;
-                const el = document.createElement("li");
-                el.setAttribute('class', 'page-item')
-                el.appendChild(btn);
-                pagination.appendChild(el);
-            }
 
-            /**
-             * Display Guests list
-             */
+                /**
+                 * Display Guests list
+                 */
+                let i = 0;
+                result.users.forEach(user => {
+                    const row = document.createElement("tr");
+                    row.setAttribute('class', 'resultGuestSearch');
+
+                    if (i % 2 !== 0) {
+                        row.setAttribute('class', 'backColor resultGuestSearch');
+                    }
+                    for (let item in user) {
+                        const el = document.createElement("td");
+                        if (item !== "id") {
+                            el.innerHTML = user[item];
+                            row.appendChild(el);
+                        } else {
+                            const img = document.createElement("img");
+                            img.setAttribute('src', '../../src/css/svg/pen.svg');
+                            const btn = document.createElement("button");
+                            btn.setAttribute('class', 'btn');
+                            btn.addEventListener('click', function() {
+                                displayGuestCard(user[item])
+                            })
+                            btn.appendChild(img);
+                            row.appendChild(btn);
+                        }
+                    }
+                    i++;
+                    displayGuests.appendChild(row);
+                })
+            })
+}
+
+function showAdmins() {
+    fetch("/admins")
+        .then(async function (response) {
+            let result = await response.json();
             let i = 0;
-            result.guests.forEach(user => {
+            result.users.forEach(user => {
                 const row = document.createElement("tr");
                 row.setAttribute('class', 'resultGuestSearch');
 
@@ -204,12 +261,12 @@ function showGuests(name, page) {
                         el.innerHTML = user[item];
                         row.appendChild(el);
                     } else {
-                        const img = document.createElement("img");
-                        img.setAttribute('src', '../../src/css/svg/pen.svg');
+                        const img = document.createElement("i");
+                        img.setAttribute('class', 'bi bi-pen');
                         const btn = document.createElement("button");
                         btn.setAttribute('class', 'btn');
                         btn.addEventListener('click', function() {
-                            displayGuestCard(user[item])
+                            deleteUser(user[item])
                         })
                         btn.appendChild(img);
                         row.appendChild(btn);
@@ -218,7 +275,17 @@ function showGuests(name, page) {
                 i++;
                 displayGuests.appendChild(row);
             })
-        });
+        })
+}
+
+function deleteUser(id) {
+    fetch("/user/delete/" + id)
+        .then(async function (response) {
+            if(window.location.href.indexOf("admin") !== -1) {
+                eraseGuestsChild();
+                showAdmins();
+            }
+        })
 }
 
 /**
@@ -262,7 +329,7 @@ function updateReservation(reservation) {
 function deleteReservation(id) {
     fetch("/reservation/delete/" + id)
         .then(async function (response) {
-            if(/reservation/.test(window.location.href)) {
+            if(window.location.href.indexOf("reservation") !== -1) {
                 showReservations(dateSelect.value);
             } else {
                 displayGuestCard(userId.value);
@@ -286,6 +353,7 @@ function displayGuestCard(id) {
             email.value = result.user.email;
             nbrOfGuest.value = result.user.defaultNbrGuest;
             allergies.innerHTML = result.user.allergies;
+            status.value = result.user.status;
             userId.value = result.user.id;
             updGuestCard.addEventListener('click', function () {
                 localStorage.setItem("guestId", result.user.id);
@@ -307,7 +375,7 @@ function displayGuestCard(id) {
                 }
 
                 if(new Date(reservation.date).getTime() > Date.now()) {
-                    if(/parameters/.test(window.location.href)){
+                    if(window.location.href.indexOf("parameters") !== -1){
                         const updBtn = document.createElement('button');
                         updBtn.innerHTML = "Modifier";
                         updBtn.setAttribute('class', 'btn');
@@ -317,6 +385,7 @@ function displayGuestCard(id) {
                         });
                         row.appendChild(updBtn);
                     }
+
                     const delBtn = document.createElement('button');
                     delBtn.innerHTML = "Supprimer";
                     delBtn.setAttribute('class', 'btn');
@@ -343,6 +412,13 @@ if(guestId != null) {
 if(userId != null) {
     displayGuestCard(userId.value);
 }
+
+
+if(window.location.href.indexOf("admin") !== -1) {
+    console.log('in');
+    showAdmins(1 );
+}
+
 
 $(function($) {
     /**
@@ -378,4 +454,6 @@ $(function($) {
     $('#log-out').click(function() {
         $('location').attr('href', 'logout.php');
     })
+
+
 });
