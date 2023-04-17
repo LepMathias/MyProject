@@ -1,7 +1,7 @@
 <?php
 
 namespace models;
-use User;
+use models\User;
 
 class Reservation
 {

@@ -100,6 +100,7 @@ class UserManager
                     $_SESSION['email'] = $user->getEmail();
                     $_SESSION['phoneNumber'] = $user->getPhoneNumber();
                     $_SESSION['allergies'] = $user->getAllergies();
+                    $_SESSION['status'] = $user->getStatus();
                     return $user;
                 } else {
                     echo "<script>alert('Mot de passe erroné')</script>";

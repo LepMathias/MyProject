@@ -21,7 +21,7 @@ try {
     $pdo = new PDO("mysql:host=$HOST;dbname=$DB", $USER, $PWD);
 
     /**
-     * User gestion -> sign_up and log_in
+     * Users gestion -> sign_up and log_in
      *              -> GuestsPage function
      */
     $userManager = new UserManager($pdo);
@@ -55,8 +55,12 @@ try {
     $reservationManager = new ReservationManager($pdo);
     if (!empty($_POST['reservation_form'])) {
         if (isset($_SESSION['id'])) {
-            $reservationStatus = $reservationManager->addReservationUId($_POST['book-date'], $_POST['book-hour'],
-                $_POST['book-nbrOfGuest'], $_SESSION['id'], $_POST['book-allergies']);
+            if ($_SESSION['status'] !== 'blackliste') {
+                $reservationStatus = $reservationManager->addReservationUId($_POST['book-date'], $_POST['book-hour'],
+                    $_POST['book-nbrOfGuest'], $_SESSION['id'], $_POST['book-allergies']);
+            } else {
+                echo "<script>alert('Un problème est survenu lors de votre réservation. Vous pouvez nous contacter par téléphone.')</script>";
+            }
         } else {
             $reservationStatus = $reservationManager->addReservation($_POST['book-date'], $_POST['book-hour'],
                 $_POST['book-nbrOfGuest'], $_POST['book-lastname'], $_POST['book-firstname'], $_POST['book-phoneNumber'],

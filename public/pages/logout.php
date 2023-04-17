@@ -1,6 +1,6 @@
 <?php
 session_start();
-$session = array();
+$SESSION = array();
 setcookie('userId', '');
 session_destroy();
 header('location: /');

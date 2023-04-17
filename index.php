@@ -31,31 +31,35 @@ $router->map('GET|POST', '/admin/users', 'adminUsers', 'adminUsers');
  * API's
  */
 $router->map('GET', '/availability/[*:q]', function ($q) {
-    include "./conf/api/getAvailability.php";
+    include "./conf/api/Reservations/getAvailability.php";
 });
 
 $router->map('GET', '/reservations/[*:date]/[*:service]', function ($date, $service) {
-    include "./conf/api/getReservations.php";
+    include "./conf/api/Reservations/getReservations.php";
 });
 
-$router->map('GET', '/guests/[*:q]/[i:p]?', function ($q, $p) {
-    include "./conf/api/getGuests.php";
+$router->map('GET', '/allGuests/[i:p]', function ($p) {
+    include "./conf/api/Users/getAllGuests.php";
+});
+
+$router->map('GET', '/guests/[*:q]/[i:p]', function ($q, $p) {
+    include "./conf/api/Users/getGuests.php";
 });
 
 $router->map('GET|POST', '/guest/[*:id]', function ($id) {
-    include "./conf/api/getGuestCard.php";
+    include "./conf/api/Users/getGuestCard.php";
 });
 
 $router->map('GET|POST', '/reservation/delete/[*:id]', function ($id) {
-    include "./conf/api/deleteReservation.php";
+    include "./conf/api/Reservations/deleteReservation.php";
 });
 
 $router->map('GET|POST', '/admins', function () {
-    include "./conf/api/getAdmins.php";
+    include "./conf/api/Users/getAdmins.php";
 });
 
 $router->map('GET|POST', '/user/delete/[*:id]', function ($id) {
-    include "./conf/api/deleteUser.php";
+    include "./conf/api/Users/deleteAdmin.php";
 });
 
 

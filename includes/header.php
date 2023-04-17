@@ -23,12 +23,12 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a href="/menus" class="btn" id="menusPage"><p>Carte et Menus</p></a></li>
-                        <?php if(isset($_SESSION) && $_SESSION['admin'] === 1 || 2): ?>
+                        <?php if(isset($_SESSION['user']) && $_SESSION['admin'] === 1 || $_SESSION['admin'] === 2): ?>
                             <li>
                                 <a class="dropdown-item" id="param" href="/parameters/reservations"><h6>Paramètres</h6></a></li>
                             <li class="nav-btn">
                                 <a class="dropdown-item" id="log-out" href="/logout"><h6>Log out</h6></a></li>
-                        <?php elseif(isset($_SESSION) && $_SESSION['admin'] === 0): ?>
+                        <?php elseif(isset($_SESSION['user']) && $_SESSION['admin'] === 0): ?>
                             <li class="nav-btn">
                                 <a class="dropdown-item" id="profile" href="/profile"><h6>Profil</h6></a></li>
                             <li class="nav-btn">

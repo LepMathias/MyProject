@@ -1,6 +1,4 @@
 
-let newAdminBtn = document.getElementById('newAdmin-btn');
-
 let displayReservations = document.getElementById('userReservations');
 let displayGuests = document.getElementById('displayGuests');
 let search = document.getElementById('nameGuest');
@@ -69,7 +67,6 @@ function eraseGuestsChild(){
         displayGuests.removeChild(displayGuests.lastChild);
     }
 }
-
 function erasePaginationChild(){
     let child = pagination.getElementsByTagName("li");
     while(child.length>0){
@@ -172,7 +169,6 @@ function showReservations(date, service) {
                 reservationsTable.appendChild(row);
                 i++;
             })
-            /*document.getElementById("displayReservations").innerHTML = await response.text();*/
         })
 }
 
@@ -180,9 +176,8 @@ function showReservations(date, service) {
  * Display Guests list with search
  * @param name
  * @param page
- * @param isAdmin
  */
-function showGuests(name, page ) {
+function showGuests(name, page) {
     document.getElementById("guestCardForm").reset();
     eraseGuestsChild();
     eraseGuestReservationsChild();
@@ -415,7 +410,6 @@ if(userId != null) {
 
 
 if(window.location.href.indexOf("admin") !== -1) {
-    console.log('in');
     showAdmins(1 );
 }
 

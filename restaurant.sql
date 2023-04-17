@@ -110,6 +110,8 @@ INSERT INTO users (id, lastname, firstname, birthdate, email, phoneNumber, passw
 
 ('ed499078-b079-11ed-9853-e0d55edaff0f', 'Admin', 'Master', '', 'admin@lqa.fr', '0102030405',
  '$2y$10$BqJaCj7EesNXfAEymSKpB.thi4Dn5eXjGVwvKs/jGVDcQvws7hFsO', '2', '', 2),
+('ed499079-b079-11ed-9853-e0d55edaff0f', 'Admin', 'Second', '', 'adm@lqa.fr', '0102030405',
+ '$2y$10$BqJaCj7EesNXfAEymSKpB.thi4Dn5eXjGVwvKs/jGVDcQvws7hFsO', '2', '', 1),
 ('ed513245-b079-11ed-9853-e0d55edaff0f', 'Dupont', 'Gérard', '', 'gerard@dpd.fr', '0102030405',
  '$2y$10$oqX8k.OI0DyX2hb/zAgkWuhdXcyT.aaJipkCtOnTlFz/8yUtS3Ium', '2', '', 0),
 ('ed594d90-b079-11ed-9853-e0d55edaff0f', 'Martinel', 'Jean', '', 'jean@mtl.fr', '0102030405',

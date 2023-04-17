@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['admin'] === 1 || 2){
+if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
     include './includes/header.php';
     include './includes/adminHeader.php'
     ?>

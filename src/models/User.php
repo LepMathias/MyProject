@@ -12,6 +12,7 @@ class User
     private string $password;
     private string $defaultNbrGuest;
     private string $allergies;
+    private string $status;
     private int $isAdmin;
 
     /**
@@ -29,6 +30,16 @@ class User
     {
         return $this->isAdmin;
     }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+
 
     public function isPasswordValid(string $password): bool
     {

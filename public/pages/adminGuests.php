@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['admin'] === 1 || 2){
+if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
     include './includes/header.php';
     include './includes/adminHeader.php'
     ?>
@@ -81,7 +81,7 @@ if($_SESSION['admin'] === 1 || 2){
             </div>
         </div>
         <div class="row">
-            <div class="col adminSection">
+            <div class="col adminSection" id="reservationOrGuests">
                 <table id="reservationGuestTable">
                     <thead>
                         <tr>
