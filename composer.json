@@ -3,6 +3,7 @@
         "altorouter/altorouter": "^2.0",
         "ext-pdo": "*",
         "ext-fileinfo": "*",
-      "ext-json": "*"
+      "ext-json": "*",
+        "symfony/apache-pack": "^1.0"
     }
 }
