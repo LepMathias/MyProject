@@ -75,7 +75,7 @@ try {
      */
     $pictureManager = new PictureManager();
     if (!empty($_FILES['uploadedFile'])) {
-        $pictureManager->isUploadSuccessful($_FILES['uploadedFile']);
+        $pictureManager->isUploadSuccessful($_FILES['uploadedFile'], $_POST['pictureTitle']);
     }
     if (!empty($_POST['oldName'])) {
         $pictureManager->updateFile($_POST['oldName'], $_POST['newName']);
