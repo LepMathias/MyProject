@@ -348,13 +348,16 @@ function displayGuestCard(id) {
             email.value = result.user.email;
             nbrOfGuest.value = result.user.defaultNbrGuest;
             allergies.innerHTML = result.user.allergies;
-            status.value = result.user.status;
             userId.value = result.user.id;
             updGuestCard.addEventListener('click', function () {
                 localStorage.setItem("guestId", result.user.id);
             });
+            if(window.location.href.indexOf("parameters") !== -1){
+                status.value = result.user.status;
+            }
 
             let i = 0;
+            console.log(result.reservations);
             result.reservations.forEach(reservation => {
                 const row = document.createElement("tr");
                 if(i % 2 !== 0){

@@ -43,13 +43,13 @@ class UserManager
     {
         try {
             $statement = $this->pdo->prepare('INSERT INTO users 
-                    (id, lastname, firstname, email, password, isAdmin) 
-                    VALUES (UUID(), :lastname, :firstname, :email, :password, :isAdmin)');
+                    (id, lastname, firstname, email, password, adminLevel) 
+                    VALUES (UUID(), :lastname, :firstname, :email, :password, :adminLevel)');
             $statement->bindValue(':lastname', $lastname);
             $statement->bindValue(':firstname', $firstname);
             $statement->bindValue(':email', $email);
             $statement->bindValue(':password', password_hash($password, PASSWORD_BCRYPT));
-            $statement->bindValue(':isAdmin', 1);
+            $statement->bindValue(':adminLevel', 1);
 
             $statement->execute();
         } catch (PDOException $e) {
