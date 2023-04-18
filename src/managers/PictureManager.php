@@ -26,7 +26,7 @@ class PictureManager
     {
         $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
         $fileSize = $_FILES['uploadedFile']['size'];
-        $upload_dir = '../img/uploads/';
+        $upload_dir = '../src/img/uploads/';
         $acceptedType = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
         if (isset($uploadedFile['error']) && $uploadedFile['error'] === UPLOAD_ERR_OK) {
             if ($fileSize < 7000000) {
