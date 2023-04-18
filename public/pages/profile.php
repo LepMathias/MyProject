@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './includes/header.php';
+include './public/includes/header.php';
 ?>
 <div class="container" id="scd-container">
     <div class="col-md-7 adminSection">
@@ -67,7 +67,7 @@ include './includes/header.php';
 
 
 <?php
-include './includes/popUpModal.php';
-include './includes/footer.php';
-include './includes/scriptsIncluded.php';
+include './public/includes/popUpModal.php';
+include './public/includes/footer.php';
+include './public/includes/scriptsIncluded.php';
 ?>

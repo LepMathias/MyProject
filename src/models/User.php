@@ -39,8 +39,6 @@ class User
         return $this->status;
     }
 
-
-
     public function isPasswordValid(string $password): bool
     {
         return password_verify($password, $this->password);

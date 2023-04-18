@@ -21,7 +21,8 @@ class UserManager
         try {
             $statement = $this->pdo->prepare('INSERT INTO users 
                     (id, lastname, firstname, birthdate, email, phoneNumber, password, defaultNbrGuest, allergies) 
-                    VALUES (UUID(), :lastname, :firstname, :birthdate, :email, :phoneNumber, :password, :defaultNbrGuest, :allergies)');
+                    VALUES (UUID(), :lastname, :firstname, :birthdate, :email, :phoneNumber, :password, 
+                            :defaultNbrGuest, :allergies)');
             $statement->bindValue(':lastname', $lastname);
             $statement->bindValue(':firstname', $firstname);
             $statement->bindValue(':birthdate', $birthdate);

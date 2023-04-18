@@ -1,8 +1,8 @@
 <?php
 session_start();
 if($_SESSION['admin'] === 2){
-    include './includes/header.php';
-    include './includes/adminHeader.php'
+    include './public/includes/header.php';
+    include './public/includes/adminHeader.php'
     ?>
 <div class="container">
     <div class="row justify-content-around">
@@ -48,8 +48,8 @@ if($_SESSION['admin'] === 2){
 </div>
 
     <?php
-    include './includes/popUpModal.php';
-    include './includes/scriptsIncluded.php';
+    include './public/includes/popUpModal.php';
+    include './public/includes/scriptsIncluded.php';
 
 } else {
     header('location: /');

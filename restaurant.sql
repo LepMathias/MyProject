@@ -1,5 +1,7 @@
 -- 'restaurant' Database
-
+DROP DATABASE IF EXISTS restaurant;
+CREATE DATABASE restaurant;
+USE restaurant;
 -- --------------------------------------------------------
 
 -- 'categoriesMeal' table

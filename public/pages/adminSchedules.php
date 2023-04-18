@@ -1,8 +1,8 @@
 <?php
 session_start();
 if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
-    include './includes/header.php';
-    include './includes/adminHeader.php'
+    include './public/includes/header.php';
+    include './public/includes/adminHeader.php'
     ?>
     <div class="container-fluid">
         <div class="row justify-content-between">
@@ -16,7 +16,7 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
                     <div id="displaySchedules">
                         <?php
                         foreach ($schedules as $schedule) {
-                            include './includes/adminSchedulesView.php';
+                            include './public/includes/adminSchedulesView.php';
                         }
                         ?>
                     </div>
@@ -33,7 +33,7 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
     </div>
 
     <?php
-    include './includes/scriptsIncluded.php';
+    include './public/includes/scriptsIncluded.php';
 
 } else {
     header('location: /');

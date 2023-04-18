@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './includes/header.php';
+include './public/includes/header.php';
 ?>
 <div class="main-div">
     <div class="home-picture">
@@ -14,16 +14,16 @@ include './includes/header.php';
                     <button type="button" data-bs-target="#caroussel1" data-bs-slide-to="0" class="active"></button>
                     <?php
                     for ($i = 1; $i <= count($files); $i++) {
-                        include './includes/buttonCarousel.php';
+                        include './public/includes/buttonCarousel.php';
                     }
                     ?>
                 </div>
                 <!-- Le carousel -->
                 <div class="carousel-inner">
                     <?php
-                    include './includes/firstDisplayCarousel.php';
+                    include './public/includes/firstDisplayCarousel.php';
                     foreach ($files as $file){
-                        include './includes/displayCarousel.php';
+                        include './public/includes/displayCarousel.php';
                     }
                     ?>
                 </div>
@@ -57,7 +57,7 @@ include './includes/header.php';
 </div>
 
 <?php
-include './includes/popUpModal.php';
-include './includes/footer.php';
-include './includes/scriptsIncluded.php';
+include './public/includes/popUpModal.php';
+include './public/includes/footer.php';
+include './public/includes/scriptsIncluded.php';
 ?>

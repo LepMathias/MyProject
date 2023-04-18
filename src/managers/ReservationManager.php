@@ -88,18 +88,4 @@ VALUES (:date, :hour, :nbrOfGuest, :lastname, :firstname, :phoneNumber, :allergi
 
         return $statement->fetch();
     }
-
-    public function getCountDiner(string $date, string $startDin, string $endDin)
-    {
-        $statement = $this->pdo->prepare("SELECT SUM(nbrOfGuest)
-                                    FROM reservations 
-                                    WHERE date = :d 
-                                    AND hour BETWEEN :a AND :b");
-        $statement->bindValue(':d', $date);
-        $statement->bindValue(':a', $startDin);
-        $statement->bindValue(':b', $endDin);
-        $statement->execute();
-
-        return $statement->fetch();
-    }
 }

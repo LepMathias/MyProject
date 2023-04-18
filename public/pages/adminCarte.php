@@ -1,8 +1,8 @@
 <?php
 session_start();
 if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
-    include './includes/header.php';
-    include './includes/adminHeader.php'
+    include './public/includes/header.php';
+    include './public/includes/adminHeader.php'
     ?>
     <div class="container-fluid" id="form-carte">
         <div class="row">
@@ -47,7 +47,7 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
                     <h4>Entrées</h4>
                     <?php
                     foreach ($starters as $meal){
-                        include './includes/adminMainCourseView.php';
+                        include './public/includes/adminMainCourseView.php';
                     }
                     ?>
                 </div>
@@ -55,7 +55,7 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
                     <h4>Plats</h4>
                     <?php
                     foreach ($mainCourses as $meal){
-                        include './includes/adminMainCourseView.php';
+                        include './public/includes/adminMainCourseView.php';
                     }
                     ?>
                 </div>
@@ -63,7 +63,7 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
                     <h4>Desserts</h4>
                     <?php
                     foreach ($desserts as $meal){
-                        include './includes/adminMainCourseView.php';
+                        include './public/includes/adminMainCourseView.php';
                     }
                     ?>
                 </div>
@@ -110,7 +110,7 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
             <div class="col-md-8">
                 <?php
                 foreach ($menus as $menu) {
-                    include './includes/adminMenusView.php';
+                    include './public/includes/adminMenusView.php';
                 }
                 ?>
             </div>
@@ -118,7 +118,7 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
     </div>
 
     <?php
-    include './includes/scriptsIncluded.php';
+    include './public/includes/scriptsIncluded.php';
 
 } else {
     header('location: /');

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './includes/header.php';
+include './public/includes/header.php';
 ?>
 <div class="container" id="scd-container">
     <div class="row text-center head-menus" id="head-menus">
@@ -14,7 +14,7 @@ include './includes/header.php';
             <div class="card-body">
                 <?php
                 foreach ($starters as $meal){
-                    include './includes/mealView.php';
+                    include './public/includes/mealView.php';
                 }
                 ?>
             </div>
@@ -28,7 +28,7 @@ include './includes/header.php';
             <div class="card-body">
                 <?php
                 foreach ($mainCourses as $meal){
-                    include './includes/mealView.php';
+                    include './public/includes/mealView.php';
                 }
                 ?>
             </div>
@@ -42,7 +42,7 @@ include './includes/header.php';
             <div class="card-body">
                 <?php
                 foreach ($desserts as $meal){
-                    include './includes/mealView.php';
+                    include './public/includes/mealView.php';
                 }
                 ?>
             </div>
@@ -58,7 +58,7 @@ include './includes/header.php';
             <div class="col">
                 <?php
                 foreach ($menus as $menu){
-                    include './includes/menuView.php';
+                    include './public/includes/menuView.php';
                 }
                 ?>
             </div>
@@ -71,7 +71,7 @@ include './includes/header.php';
 </div>
 
 <?php
-include './includes/popUpModal.php';
-include './includes/footer.php';
-include './includes/scriptsIncluded.php';
+include './public/includes/popUpModal.php';
+include './public/includes/footer.php';
+include './public/includes/scriptsIncluded.php';
 ?>

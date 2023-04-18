@@ -1,8 +1,8 @@
 <?php
 session_start();
 if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
-    include './includes/header.php';
-    include './includes/adminHeader.php'
+    include './public/includes/header.php';
+    include './public/includes/adminHeader.php'
     ?>
     <div class="container-fluid gallery-menu" id="gallery-menu">
         <div id="gallery-menu">
@@ -24,7 +24,7 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
                     <div class="row justify-content-center">
                         <?php
                         foreach ($allPictures as $picture) {
-                            include './includes/adminPictureView.php';
+                            include './public/includes/adminPictureView.php';
                         }
                         ?>
                     </div>
@@ -34,7 +34,7 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
     </div>
 
     <?php
-    include './includes/scriptsIncluded.php';
+    include './public/includes/scriptsIncluded.php';
 
 } else {
     header('location: /');

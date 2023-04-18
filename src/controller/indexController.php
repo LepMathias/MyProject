@@ -26,28 +26,22 @@ try {
      */
     $userManager = new UserManager($pdo);
     if (!empty($_POST['log-in_form'])) {
-        try {
-            $user = $userManager->connectUser(htmlspecialchars($_POST['email']), htmlentities($_POST['password']));
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
+        $user = $userManager->connectUser(htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password']));
     }
     if (!empty($_POST['sign-up_form'])) {
-        $regStatus = $userManager->addUser(htmlentities($_POST['lastname']), htmlentities($_POST['firstname']),
-            $_POST['birthdate'], htmlspecialchars($_POST['email']), htmlentities($_POST['phoneNumber']),
-            $_POST['password'], htmlentities($_POST['defaultNbrGuest']), htmlentities($_POST['allergies']));
+        $regStatus = $userManager->addUser(htmlspecialchars($_POST['lastname']), htmlspecialchars($_POST['firstname']),
+            $_POST['birthdate'], htmlspecialchars($_POST['email']), htmlspecialchars($_POST['phoneNumber']),
+            $_POST['password'], htmlspecialchars($_POST['defaultNbrGuest']), htmlspecialchars($_POST['allergies']));
     }
     if (!empty($_POST['userId'])) {
-        $userManager->updateUser(htmlentities($_POST['lastname']), htmlentities($_POST['firstname']),
-            $_POST['birthdate'], htmlspecialchars($_POST['email']), htmlentities($_POST['phoneNumber']),
-            $_POST['nbrOfGuest'], htmlentities($_POST['allergies']), $_POST['userId']);
+        $userManager->updateUser(htmlspecialchars($_POST['lastname']), htmlspecialchars($_POST['firstname']),
+            $_POST['birthdate'], htmlspecialchars($_POST['email']), htmlspecialchars($_POST['phoneNumber']),
+            $_POST['nbrOfGuest'], htmlspecialchars($_POST['allergies']), $_POST['userId']);
     }
     if (!empty($_POST['createAdmin'])) {
-        $userManager->addAdmin(htmlentities($_POST['adminLastname']), htmlentities($_POST['adminFirstname']),
+        $userManager->addAdmin(htmlspecialchars($_POST['adminLastname']), htmlspecialchars($_POST['adminFirstname']),
             htmlspecialchars($_POST['adminEmail']), $_POST['adminPassword']);
     }
-
-
 
     /**
      * Create Reservation
