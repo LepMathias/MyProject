@@ -26,16 +26,15 @@ class PictureManager
     {
         $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
         $fileSize = $_FILES['uploadedFile']['size'];
-        $upload_dir = './src/img/uploads/';
+        $upload_dir = '../img/uploads/';
         $acceptedType = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
         if (isset($uploadedFile['error']) && $uploadedFile['error'] === UPLOAD_ERR_OK) {
             if ($fileSize < 7000000) {
                 $finfo = new finfo(FILEINFO_MIME_TYPE);
                 $mimeType = $finfo->file($uploadedFile['tmp_name']);
                 if (in_array($mimeType, $acceptedType)) {
-                    if (move_uploaded_file($fileTmpPath,
-                        $upload_dir . $_POST['pictureTitle'] . '.' . $this->getExtensionFromMimeType($mimeType))) {
-                    }
+                    move_uploaded_file($fileTmpPath, $upload_dir . $_POST['pictureTitle'] . '.' .
+                        $this->getExtensionFromMimeType($mimeType));
                 }
             }
         }

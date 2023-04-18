@@ -80,8 +80,8 @@ try {
     if (!empty($_POST['oldName'])) {
         $pictureManager->updateFile($_POST['oldName'], $_POST['newName']);
     }
-    if (!empty($_POST['file'])) {
-        $pictureManager->deleteFile($_POST['file']);
+    if (!empty($_POST['deleteFile'])) {
+        $pictureManager->deleteFile($_POST['deleteFile']);
     }
     $allPictures = $pictureManager->getUploadedFiles();
     /**
