@@ -34,7 +34,7 @@
             <div class="modal-body">
                 <p class="text-center">Le gluten et la lactose.</p>
                 <p>Deux allergènes qui ne sont pas à négliger dans la cuisine savoyarde.<br><br>
-                    C'est pourquoi nous proposons différents pains snas gluten ainsi que des plats sans lactose tout au
+                    C'est pourquoi nous proposons différents pains sans gluten ainsi que des plats sans lactose tout au
                     long de l'année.</p>
                 <p>Pour toute(s) autre(s) allergie(s), n'hésitez pas à nous le spécifier lors de votre réservation.</p>
             </div>
