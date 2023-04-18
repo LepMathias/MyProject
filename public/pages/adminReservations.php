@@ -23,8 +23,9 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
                     </form>
                 </div>
             </div>
+
             <div class="col-md-8">
-                <div class="row adminSection" id="displayReservations">
+                <div class="row adminSection">
                     <table>
                         <thead>
                         <tr>

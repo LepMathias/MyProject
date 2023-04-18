@@ -32,7 +32,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p class="text-center">Le gluten et la lactose.</p>
+                <p class="text-center">Le gluten et le lactose.</p>
                 <p>Deux allergènes qui ne sont pas à négliger dans la cuisine savoyarde.<br><br>
                     C'est pourquoi nous proposons différents pains sans gluten ainsi que des plats sans lactose tout au
                     long de l'année.</p>
