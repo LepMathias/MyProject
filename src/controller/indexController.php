@@ -36,7 +36,7 @@ try {
     if (!empty($_POST['userId'])) {
         $userManager->updateUser(htmlspecialchars($_POST['lastname']), htmlspecialchars($_POST['firstname']),
             $_POST['birthdate'], htmlspecialchars($_POST['email']), htmlspecialchars($_POST['phoneNumber']),
-            $_POST['nbrOfGuest'], htmlspecialchars($_POST['allergies']), $_POST['userId']);
+            $_POST['nbrOfGuest'], htmlspecialchars($_POST['allergies']), $_POST['status'], $_POST['userId']);
     }
     if (!empty($_POST['createAdmin'])) {
         $userManager->addAdmin(htmlspecialchars($_POST['adminLastname']), htmlspecialchars($_POST['adminFirstname']),

@@ -9,7 +9,8 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
         <div class="row">
             <form name="searchGuest" method="post" action="">
                 <label for="nameGuest" class="form-label">Rechercher un client</label>
-                <input type="text" name="nameGuest" id="nameGuest" class="form-control" placeholder="Recherche de client par Prénom" onkeyup="showGuests(this.value, 1)">
+                <input type="text" name="nameGuest" id="nameGuest" class="form-control"
+                       placeholder="Recherche de client par Prénom" onkeyup="showGuests(this.value, 1)">
             </form>
         </div>
         <div class="row justify-content-between">

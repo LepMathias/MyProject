@@ -59,12 +59,12 @@ class UserManager
     }
 
     public function updateUser(string $lastname, string $firstname, string $birthdate, string $email, string $phoneNumber,
-                            string $defaultNbrGuest, string $allergies, string $id)
+                            string $defaultNbrGuest, string $allergies, string $status, string $id)
     {
         try {
             $statement = $this->pdo->prepare("UPDATE users 
             SET lastname = :lastname, firstname = :firstname, birthdate = :birthdate, email = :email, phoneNumber = :phoneNumber,
-                defaultNbrGuest = :defaultNbrGuest, allergies = :allergies
+                defaultNbrGuest = :defaultNbrGuest, allergies = :allergies, status = :status
             WHERE id = :id");
             $statement->bindValue(':lastname', $lastname);
             $statement->bindValue(':firstname', $firstname);
@@ -73,6 +73,7 @@ class UserManager
             $statement->bindValue(':phoneNumber', $phoneNumber);
             $statement->bindValue(':defaultNbrGuest', $defaultNbrGuest);
             $statement->bindValue(':allergies', $allergies);
+            $statement->bindValue(':status', $status);
             $statement->bindValue(':id', $id);
 
             $statement->execute();

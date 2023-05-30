@@ -161,8 +161,5 @@ INSERT INTO reservations (userId, id, date, hour, nbrOfGuest, lastname, firstnam
    ('4eb21005-d952-11ed-ad18-1cbfcea3a260', 16, '2023-11-16', '19:15', '6', NULL, NULL, NULL, NULL),
    (NULL, 17, '2023-02-16', '19:45', '2', 'Dupond', 'Albert', '0203040506', 'Gluten'),
    ('afa9eda2-d954-11ed-ad18-1cbfcea3a260', 18, '2023-05-29', '20:30', '3', NULL, NULL, NULL, 'fruits de mer'),
-
-
-
    ('f5e1b663-d953-11ed-ad18-1cbfcea3a260', 19, '2023-10-13', '19:30', '18', NULL, NULL, NULL, 'gluten');
 -- --------------------------------------------------------

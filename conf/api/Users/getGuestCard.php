@@ -19,3 +19,4 @@ $statement->execute();
 $result['reservations'] = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 echo json_encode($result);
+

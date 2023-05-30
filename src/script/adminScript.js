@@ -110,7 +110,7 @@ function showReservations(date, service) {
                         link.setAttribute('class', 'btn VIP');
                     }
                     link.addEventListener('click', function() {
-                        localStorage.setItem("guestId", reservation.userId);
+                        sessionStorage.setItem("guestId", reservation.userId);
                         document.location = '/parameters/guests';
                         })
                     Ulastname.appendChild(link);
@@ -350,14 +350,13 @@ function displayGuestCard(id) {
             allergies.innerHTML = result.user.allergies;
             userId.value = result.user.id;
             updGuestCard.addEventListener('click', function () {
-                localStorage.setItem("guestId", result.user.id);
+                sessionStorage.setItem("guestId", result.user.id);
             });
             if(window.location.href.indexOf("parameters") !== -1){
                 status.value = result.user.status;
             }
 
             let i = 0;
-            console.log(result.reservations);
             result.reservations.forEach(reservation => {
                 const row = document.createElement("tr");
                 if(i % 2 !== 0){
@@ -379,7 +378,7 @@ function displayGuestCard(id) {
                         updBtn.setAttribute('class', 'btn');
                         updBtn.addEventListener("click", function () {
                             updateReservation(reservation)
-                            localStorage.setItem("guestId", result.user.id);
+                            sessionStorage.setItem("guestId", result.user.id);
                         });
                         row.appendChild(updBtn);
                     }
@@ -402,10 +401,10 @@ function displayGuestCard(id) {
             })
         })
 }
-const guestId = localStorage.getItem("guestId");
+const guestId = sessionStorage.getItem("guestId");
 if(guestId != null) {
     displayGuestCard(guestId);
-    localStorage.removeItem("guestId");
+    sessionStorage.removeItem("guestId");
 }
 if(userId != null) {
     displayGuestCard(userId.value);

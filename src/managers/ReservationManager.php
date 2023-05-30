@@ -34,7 +34,8 @@ class ReservationManager
         }
     }
 
-    public function addReservation(string $date, string $hour, string $nbrOfGuest, string $lastname, string $firstname, string $phoneNumber, string $allergies)
+    public function addReservation(string $date, string $hour, string $nbrOfGuest, string $lastname, string $firstname,
+                                   string $phoneNumber, string $allergies)
     {
         try {
             $statement = $this->pdo->prepare('INSERT INTO reservations
@@ -60,7 +61,8 @@ VALUES (:date, :hour, :nbrOfGuest, :lastname, :firstname, :phoneNumber, :allergi
     {
         try {
             $statement = $this->pdo->prepare("UPDATE reservations
-                                                    SET date = :date, hour = :hour, nbrOfGuest = :nbrOfGuest, allergies = :allergies
+                                                    SET date = :date, hour = :hour, nbrOfGuest = :nbrOfGuest, 
+                                                        allergies = :allergies
                                                     WHERE id = :id");
             $statement->bindValue('date', $date);
             $statement->bindValue('hour', $hour);
