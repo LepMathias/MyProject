@@ -168,7 +168,7 @@
                         <div class="col">
                             <label for="reg-lastname" class="form-label">Nom</label>
                             <input type="text" name="lastname" id="reg-lastname" class="form-control"
-                                   placeholder="Lettre uniquement" required>
+                                   placeholder="Lettre uniquement" required pattern="^[a-z][A-Z]">
                         </div>
 
                         <div class="col">

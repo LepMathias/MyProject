@@ -8,3 +8,5 @@ $statement = $pdo->prepare("DELETE from reservations WHERE id = :id");
 $statement->bindValue('id', $id);
 
 $statement->execute();
+
+

@@ -54,7 +54,6 @@ include './public/includes/header.php';
                     <th>Nombre de pax</th>
                     <th>Allergies</th>
                     <th></th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody id="userReservations">

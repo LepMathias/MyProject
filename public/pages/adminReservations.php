@@ -10,16 +10,17 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
                 <div class="card">
                     <form name="reservationsCheck" method="post" action="">
                         <label for="date" class="form-label">Date</label>
-                        <input type="date" name="date-select" id="date-select" class="form-control" onchange="showReservations(this.value, service.value)"
+                        <input type="date" name="date-select" id="date-select" class="form-control"
+                               onchange="showReservations(this.value, service.value)"
                                onclick="showReservations(this.value, service.value)">
 
                         <label for="service" class="form-label">Service</label>
-                        <select type="text" name="service" id="service" class="form-control" onchange="showReservations(dateSelect.value ,this.value)">
+                        <select type="text" name="service" id="service" class="form-control"
+                                onchange="showReservations(dateSelect.value ,this.value)">
                             <option value="both">Tous</option>
                             <option value="lunch">Déjeuner</option>
                             <option value="diner">Dîner</option>
                         </select>
-
                     </form>
                 </div>
             </div>

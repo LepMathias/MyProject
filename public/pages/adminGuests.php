@@ -91,7 +91,6 @@ if($_SESSION['admin'] === 1 || $_SESSION['admin'] === 2){
                             <th>Nombre de pax</th>
                             <th>Allergies</th>
                             <th></th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="userReservations">

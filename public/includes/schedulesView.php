@@ -5,3 +5,4 @@
     <td><?=$schedule->getStartDin().' - '.$schedule->getEndDin()?>
     </td>
 </tr>
+

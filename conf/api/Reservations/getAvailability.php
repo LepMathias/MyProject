@@ -20,7 +20,8 @@ $day = $schedulesManager->getDay($q);
 $schedulesDay = $schedulesManager->getSchedulesDay($day);
 $nbrOnLunch = $reservationManager->getCountReservations($q, $schedulesDay->getStartDej(), $schedulesDay->getEndDej());
 $nbrOnDiner = $reservationManager->getCountReservations($q, $schedulesDay->getStartDin(), $schedulesDay->getEndDin());
-$availability = $schedulesManager->getAvailableHours($day, $nbrOnLunch[0], $nbrOnDiner[0], $maxOfGuest->getContent(), $schedulesGap->getContent());
+$availability = $schedulesManager->getAvailableHours($day, $nbrOnLunch[0], $nbrOnDiner[0], $maxOfGuest->getContent(),
+    $schedulesGap->getContent());
 
 
 if($availability['lunch'] === "close"){

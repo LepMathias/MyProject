@@ -37,20 +37,23 @@ include './public/includes/header.php';
             </div>
         </div>
     </div>
-    <div class="row justify-content-center div-100vw">
+    <div class="row justify-content-center">
         <div class="col-md-3">
             <div class="row">
-                <button class="btn-menu"><img class="pic-menu" src="./src/img/navbar/menu_icone-reservation.jpg" id="booking"></button>
+                <button class="btn-menu"><img class="pic-menu" src="./src/img/navbar/menu_icone-reservation.jpg"
+                                              id="booking"></button>
             </div>
         </div>
         <div class="col-md-3">
             <div class="row">
-                <button class="btn-menu"><img class="pic-menu" src="./src/img/navbar/menu_allergenes_pic.jpg" id="allergy"></button>
+                <button class="btn-menu"><img class="pic-menu" src="./src/img/navbar/menu_allergenes_pic.jpg"
+                                              id="allergy"></button>
             </div>
         </div>
         <div class="col-md-3">
             <div class="row">
-                <button class="btn-menu"><img class="pic-menu" src="./src/img/navbar/menu_horraires_pic.jpg" id="schedules"></button>
+                <button class="btn-menu"><img class="pic-menu" src="./src/img/navbar/menu_horraires_pic.jpg"
+                                              id="schedules"></button>
             </div>
         </div>
     </div>

@@ -22,22 +22,23 @@
                         <i class="bi bi-menu-down"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a href="/menus" class="btn" id="menusPage"><p>Carte et Menus</p></a></li>
+                        <li>
+                            <a href="/menus" class="btn" id="menusPage"><p>Carte et Menus</p></a></li>
                         <?php if(isset($_SESSION['user']) && $_SESSION['admin'] === 1 || $_SESSION['admin'] === 2): ?>
                             <li>
                                 <a class="dropdown-item" id="param" href="/parameters/reservations"><h6>Paramètres</h6></a></li>
                             <li class="nav-btn">
-                                <a class="dropdown-item" id="log-out" href="/logout"><h6>Log out</h6></a></li>
+                                <a class="dropdown-item" id="log-out" href="/logout"><h6>Déconnexion</h6></a></li>
                         <?php elseif(isset($_SESSION['user']) && $_SESSION['admin'] === 0): ?>
                             <li class="nav-btn">
                                 <a class="dropdown-item" id="profile" href="/profile"><h6>Profil</h6></a></li>
                             <li class="nav-btn">
-                                <a class="dropdown-item" id="log-out" href="/logout"><h6>Log out</h6></a></li>
+                                <a class="dropdown-item" id="log-out" href="/logout"><h6>Déconnexion</h6></a></li>
                         <?php else: ?>
                             <li class="nav-btn">
-                                <button class="dropdown-item" id="log-in"><h6>Log in</h6></button></li>
+                                <button class="dropdown-item" id="log-in"><h6>Connexion</h6></button></li>
                             <li class="nav-btn">
-                                <button class="dropdown-item" id="sign-up"><h6>Sign up</h6></button></li>
+                                <button class="dropdown-item" id="sign-up"><h6>Inscription</h6></button></li>
                         <?php endif; ?>
                     </ul>
                 </div>
