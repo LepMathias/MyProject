@@ -37,8 +37,7 @@ include './public/includes/header.php';
                     <div class="row justify-content-start">
                         <button type="submit" class="btn btn-success guestCardForm-btn form-control" id="upd-guestCard">
                             <img class="guestCardForm-svg" src='../../src/css/svg/save.svg'/></button>
-                        <button type="button" class="btn btn-warning" id="booking"
-                                onclick="createReservation()">Réservez une table</button>
+                        <button type="button" class="btn btn-warning booking-btn" id="booking">Réservez une table</button>
                     </div>
                 </div>
             </div>
